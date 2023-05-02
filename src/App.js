@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState, useEffect } from "react";
+import HomePage from "./homePage";
+import Login from "./component/loginPage/loginPage";
+import AdminPage from "./component/adminPage/adminpage";
+import SumaryPage from "./component/adminPage/page/sumaryPage";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import TempHumi from "./component/adminPage/page/temp-humi";
+import Light from "./component/adminPage/page/light";
+import "./app.scss"
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <nav>
+        <Link to="/"></Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/login/admin" element={<AdminPage />} />
+        <Route path="/login/admin/" element={<SumaryPage />} />
+        <Route path="/login/admin/temp-humi" element={<TempHumi />} />
+        <Route path="/login/admin/light" element={<Light />} />
+      </Routes>
+    </>
   );
 }
 
