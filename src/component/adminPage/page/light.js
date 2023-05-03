@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { getDatabase, ref, child, get, set } from "firebase/database";
 import { dataRef } from "../../../firebase";
 import tempicon from "../../../img/temp-icon.svg";
+import ChartExample from "./visdeo";
 import "./page.scss";
 import adminImg from "../../../img/admin.jpg";
 import {
@@ -18,15 +19,47 @@ import {
 
 export default function TempHumi() {
   const dbRef = ref(getDatabase(dataRef));
-  const [Temp, setTemp] = useState("");
-  const [Humi, setHumi] = useState("");
+  const [Humis, setHumi] = useState("");
+  const [Temps, setTemps] = useState("");
+  const [Lights, setLights] = useState("");
 
   useEffect(() => {
-    get(child(dbRef, `ESP32_APP/TEMPERATURE_HISTORY`))
+    setInterval(() => {
+      get(child(dbRef, `BH1750/LightHistory`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            setLights(snapshot.val());
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, 1000);
+  }, []);
+  useEffect(() => {
+    get(child(dbRef, `DHT/HumHistory`))
       .then((snapshot) => {
         if (snapshot.exists()) {
-          setTemp(snapshot.val());
-          console.log(Temp);
+          setInterval(() => {
+            setHumi(snapshot.val());
+          }, 1000);
+        } else {
+          console.log("No data available");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+  useEffect(() => {
+    get(child(dbRef, `DHT/TempHistory`))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          setInterval(() => {
+            setTemps(snapshot.val());
+          }, 1000);
         } else {
           console.log("No data available");
         }
@@ -36,20 +69,18 @@ export default function TempHumi() {
       });
   }, []);
 
-  useEffect(() => {
-    get(child(dbRef, `ESP32_APP/HUMIDITY_HISTORY`))
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          setHumi(snapshot.val());
-          console.log(Humi);
-        } else {
-          console.log("No data available");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+  const dt = Object.values(Temps).reverse().slice(0, 11);
+  const dh = Object.values(Humis).reverse().slice(0, 11);
+  const dl = Object.values(Lights).reverse().slice(0, 11);
+  const dataTemps = dt.reverse();
+  const dataLights = dl.reverse();
+  const dataHumis = dh.reverse();
+
+  const tvData = dataTemps.map((temperature, index) => ({
+    temperature,
+    humidity: dataHumis[index],
+    light: dataLights[index],
+  }));
 
   return (
     <div className="page">
@@ -76,13 +107,20 @@ export default function TempHumi() {
         >
           Light
         </NavLink>
+        <NavLink
+          to="/login/admin/history"
+          activeClassName="active-link"
+          className="link"
+        >
+          History
+        </NavLink>
       </nav>
 
       <div className="page__temphumi">
         <div className="header">
           <div>
             <h2>
-              <b>Nhiệt độ và độ ẩm</b>
+              <b>Ánh Sáng</b>
             </h2>
           </div>
           <div className="header__login">
@@ -92,54 +130,33 @@ export default function TempHumi() {
             </div>
           </div>
         </div>
-
         <div className="block">
           <div className="temp row">
             <div className="cards col-3">
               <div className="card">
-                {Object.values(Temp)
+                {Object.values(Lights)
                   .reverse()
                   .slice(0, 1)
                   .map((value, index) => (
                     <h2 key={index}>{value}</h2>
                   ))}
-                <p>Nhiệt Độ</p>
+                <p>Cường độ ánh sáng</p>
               </div>
             </div>
             <div className="chart col-8">
-              <ResponsiveContainer width="100%" height={300}>
-                <LineChart data={Object.values(Temp).slice(0, 11)}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="" />
-                  <YAxis />
+            <ResponsiveContainer width="90%" height={300}>
+                <LineChart data={tvData}>
+                  <CartesianGrid strokeDasharray="3 10" />
+                  <XAxis />
+                  <YAxis domain={[0, 1000]} />
                   <Tooltip />
                   <Legend />
-                  <Line type="monotone" dataKey="temp" stroke="#8884d8" />
+                  <Line type="monotone" dataKey="light" stroke="#15ff00" />
                 </LineChart>
               </ResponsiveContainer>
             </div>
           </div>
-        </div>
 
-        <div className="History">
-          <div className="row g-0">
-            <div className="col-6 History__block">
-                {Object.values(Temp)
-                  .reverse()
-                  .slice(0, 20)
-                  .map((value, index) => (
-                    <p key={index}>{value}</p>
-                  ))}
-            </div>
-            <div className="col-6 History__block">
-                {Object.values(Humi)
-                  .reverse()
-                  .slice(0, 20)
-                  .map((value, index) => (
-                    <p key={index}>{value}</p>
-                  ))}
-            </div>
-          </div>
         </div>
       </div>
     </div>

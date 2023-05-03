@@ -1,26 +1,35 @@
 .login-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    
+  background-image: url("https://4.bp.blogspot.com/-8tNIbkTopk4/VshrmPLjHfI/AAAAAAAAMHM/Y7x__lGn0D0/w1200-h630-p-k-no-nu/_MG_9057.JPG");
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-size: cover;
+
+  .login-center {
+    width: 400px;
+    height: fit-content;
+    padding: 60px 30px;
+    border-radius: 10px;
+    box-shadow: rgba(122, 126, 129, 0.2) 0px 8px 24px;
     h1 {
       font-size: 2rem;
       margin-bottom: 2rem;
       color: #333;
     }
-    
+
     .form-group {
       margin-bottom: 1rem;
-      
+
       label {
         display: block;
         margin-bottom: 0.5rem;
         color: #555;
         font-weight: bold;
       }
-      
+
       input {
         padding: 0.5rem;
         border: none;
@@ -28,14 +37,14 @@
         box-shadow: 0 0 0 1px #ccc;
         font-size: 1rem;
         width: 100%;
-        
+
         &:focus {
           outline: none;
           box-shadow: 0 0 0 2px #0099ff;
         }
       }
     }
-    
+
     .submit-button {
       padding: 0.5rem 1rem;
       background-color: #0099ff;
@@ -45,15 +54,27 @@
       font-size: 1rem;
       cursor: pointer;
       transition: all 0.3s ease;
-      
+      width: 100%;
+
       &:hover {
         background-color: #0077cc;
       }
     }
-    
+
     .error-message {
       color: red;
       margin-bottom: 1rem;
     }
   }
-  
+
+  .text-group {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: space-between;
+  }
+
+}
+.styles{
+}

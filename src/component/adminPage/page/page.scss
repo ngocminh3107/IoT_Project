@@ -20,9 +20,9 @@
             color: rgb(157, 159, 160);
             text-decoration: none;
             padding: 20px;
+            color: #ffffff;
 
             &:hover {
-                color: #ffffff;
                 background-color: #0e2237;
             }
         }
@@ -47,10 +47,12 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    p{
+
+                    p {
                         margin-right: 10px;
                         margin-top: 10px;
                     }
+
                     &-img {
 
                         img {
@@ -71,87 +73,166 @@
                 justify-content: space-around;
             }
 
-            &__statistical{
-                padding:20px 20px;
+            &__statistical {
+                padding: 20px 20px;
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
                 margin-top: 50px;
-                &-chart{
+
+                &-chart {
+                    padding-top: 20px;
                     border-radius: 5px;
                     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-                    &:hover{
+
+                    &:hover {
                         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
                     }
                 }
-                &-button{
+
+                &-button {
                     padding: 20px 20px;
                     display: flex;
                     flex-direction: column;
                     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-                    &:hover{
+
+                    .music-bar {
+                        margin-top: 10px;
+                        width: 100%;
+                        justify-content: space-around;
+                        display: flex;
+                        padding: 0 40px;
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 20px;
+                        button {
+                            background: none;
+                            border: none;
+                            width: 30px;
+                            height: 30px;
+
+                            &:first-child {
+                                &:hover {
+                                    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+                                }
+
+                                margin-top: 10px;
+                            }
+
+                            &:nth-child(2) {
+                                margin-top: -4px;
+                            }
+
+                            &:last-child {
+                                margin-top: 10px;
+                                transform: rotate(180deg);
+
+                                &:hover {
+                                    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+                                }
+                            }
+
+                        }
+                    }
+
+                    &:hover {
                         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
                     }
-                    .music-bar{
-                        margin-bottom: 20px;
-                    }
-                    .buttons{
+
+               
+
+                    .buttons {
                         margin-top: 10px;
                         display: flex;
                         flex-direction: row;
                         justify-content: space-between;
-                        p{
+
+                        p {
                             margin-top: 10px;
+                            font-weight: 500;
                         }
-                        button{
+
+                        button {
                             border: none;
                             height: 30px;
                             border-radius: 100px;
                             width: 60px;
-                            .circal{
+                            margin-top: 8px;
+
+                            .circal {
                                 height: 28px;
                                 width: 28px;
                                 border-radius: 100px;
                                 background-color: #0076f5;
-                            float: left;
-                                
+                                float: left;
+
                             }
                         }
                     }
                 }
             }
 
+            &__history {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                justify-content: space-between;
+                padding: 0 15px;
+
+                &-colum {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+
+                    p {
+                        font-style: bold;
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        &:nth-child(odd) {
+                            padding: 10px 0;
+                            background-color: aquamarine;
+                        }
+                    }
+                }
+            }
 
         }
     }
-    &__temphumi{
+
+    &__temphumi {
         padding-left: 20%;
         width: 100%;
-        .block{
-            .temp{
+
+        .block {
+            .temp {
                 padding: 0 30px;
-                    display: flex;
-                    width: 100%;
-                    justify-content: space-between;
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
             }
-            .humi{
+
+            .humi {
                 margin-top: 55px;
                 padding: 0 30px;
-                    padding:0 30px;
-                    display: flex;
-                    width: 100%;
-                    justify-content: space-between;
+                padding: 0 30px;
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
             }
         }
-       
+
     }
 
 
 
 }
-.chart{
+
+.chart {
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    padding-top:20px;
+    padding-top: 40px;
 }
 
 .header {
@@ -166,10 +247,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        p{
+
+        p {
             margin-right: 10px;
             margin-top: 10px;
         }
+
         &-img {
 
             img {
@@ -183,7 +266,7 @@
 }
 
 
-.cards{
+.cards {
     width: 260px;
     border: none;
     padding: 20px 40px;
@@ -192,28 +275,36 @@
     align-items: center;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     justify-content: space-between;
-    video{
+
+    video {
         padding: 0;
         width: 100%;
         height: 100%;
     }
-    &:hover{
+
+    &:hover {
         box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     }
-    .card{
-    border: none;
 
-        h2{
-            color:rgb(6, 116, 241);
+    .card {
+        border: none;
+        display: flex;
+        height: 100%;
+        justify-content: space-between;
+
+        h2 {
+            color: rgb(6, 116, 241);
             font-weight: 800;
             font-size: 38px;
         }
-        p{
+
+        p {
             font-size: 23px;
             font-weight: 500;
         }
     }
-    img{
+
+    img {
         height: 70px;
         width: 60px;
     }
@@ -222,26 +313,35 @@
 
 
 .active {
-    background-color: aquamarine;
+    color: #00ffc8;
+    background-color: rgb(41, 36, 95);
 }
 
-.actives{
+.actives {
     display: flex;
     width: 100%;
     justify-content: end;
-   
+
 }
-.History{
+
+.activebtn {
+    display: none;
+
+}
+
+.History {
     padding: 0 30px;
     margin-top: 70px;
-    &__block{
+
+    &__block {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        p{
+
+        p {
             padding: 20px 0px;
-        width: 100%;
+            width: 100%;
 
             border-bottom: 1px solid #0a1929;
         }

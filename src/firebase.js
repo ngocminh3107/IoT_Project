@@ -7,14 +7,14 @@ import 'firebase/compat/auth';
 // Cấu hình Firebase cho ứng dụng web của bạn
 // Đối với Firebase JS SDK v7.20.0 và mới hơn, measurementId là tùy chọn
 const firebaseConfig = {
-  apiKey: "AIzaSyBOMEXi9c5ppK5lvpoJUKNeaIQgniGGBTw",
-  authDomain: "test2-e95c3.firebaseapp.com",
-  databaseURL: "https://test2-e95c3-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "test2-e95c3",
-  storageBucket: "test2-e95c3.appspot.com",
-  messagingSenderId: "447598256164",
-  appId: "1:447598256164:web:3a1a548663eec2cc09f8b1",
-  measurementId: "G-JVXWK275MQ"
+  apiKey: "AIzaSyDF_MFCHt_pxyLu0l2K5VM62nqsB_RGniY",
+  authDomain: "chimyen-fb711.firebaseapp.com",
+  databaseURL: "https://chimyen-fb711-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "chimyen-fb711",
+  storageBucket: "chimyen-fb711.appspot.com",
+  messagingSenderId: "748175740205",
+  appId: "1:748175740205:web:04359546d93133c66257a4",
+  measurementId: "G-BQQ98ZGC76"
 };
 
 // Khởi tạo Firebase
