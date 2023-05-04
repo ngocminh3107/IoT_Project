@@ -29,12 +29,27 @@ export default function SumaryPage() {
   const [replay4Status, setReplay4Status] = useState("");
   const [replay5Status, setReplay5Status] = useState("");
   const [replay6Status, setReplay6Status] = useState("");
+  const [auto, setAuto] = useState("");
 
   const [Temp, setTemp] = useState("");
   const [Temps, setTemps] = useState("");
   const [Light, setLight] = useState("");
   const [Lights, setLights] = useState("");
   const [Humis, setHumi] = useState("");
+
+  useEffect(() => {
+    get(child(dbRef, `autoControl`))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          setAuto(snapshot.val());
+        } else {
+          console.log("No data available");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
   //replau
   useEffect(() => {
@@ -46,7 +61,7 @@ export default function SumaryPage() {
           setReplay3Status(snapshot.val().relay3);
           setReplay4Status(snapshot.val().relay4);
           setReplay5Status(snapshot.val().relay5);
-          setReplay5Status(snapshot.val().relay6);
+          setReplay6Status(snapshot.val().relay6);
         } else {
           console.log("No data available");
         }
@@ -62,7 +77,6 @@ export default function SumaryPage() {
       .then((snapshot) => {
         if (snapshot.exists()) {
           setInterval(() => {
-            setReplay5Status(snapshot.val());
             setTemp(snapshot.val());
           }, 1000);
         } else {
@@ -74,13 +88,12 @@ export default function SumaryPage() {
       });
   }, []);
 
-//BH1750
+  //BH1750
   useEffect(() => {
     setInterval(() => {
       get(child(dbRef, `BH1750`))
         .then((snapshot) => {
           if (snapshot.exists()) {
-            setReplay5Status(snapshot.val());
             setLight(snapshot.val());
           } else {
             console.log("No data available");
@@ -92,7 +105,7 @@ export default function SumaryPage() {
     }, 1000);
   }, []);
 
-//hiso
+  //hiso
   useEffect(() => {
     get(child(dbRef, `DHT/HumHistory`))
       .then((snapshot) => {
@@ -128,7 +141,6 @@ export default function SumaryPage() {
       get(child(dbRef, `BH1750/LightHistory`))
         .then((snapshot) => {
           if (snapshot.exists()) {
-            setReplay5Status(snapshot.val());
             setLights(snapshot.val());
           } else {
             console.log("No data available");
@@ -139,6 +151,17 @@ export default function SumaryPage() {
         });
     }, 1000);
   }, []);
+
+  const toggleAuto = () => {
+    const newStatus = auto === "1" ? "0" : "1";
+    set(child(dbRef, "autoControl"), newStatus)
+      .then(() => {
+        setAuto(newStatus);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   const toggleReplay1 = () => {
     const newStatus = replay1Status === "1" ? "0" : "1";
@@ -169,6 +192,7 @@ export default function SumaryPage() {
   };
   const toggleReplay4 = () => {
     const newStatus = replay4Status === "1" ? "0" : "1";
+    console.log(newStatus)
     set(child(dbRef, "Relay/relay4/status"), newStatus)
       .then(() => setReplay4Status(newStatus))
       .catch((error) => {
@@ -201,17 +225,14 @@ export default function SumaryPage() {
     const button8 = document.getElementById("button7");
     button7.classList.add("activebtn");
     button8.classList.remove("activebtn");
-
-    
   };
   const toggleClass7 = () => {
     const button7 = document.getElementById("button8");
     const button8 = document.getElementById("button7");
     button8.classList.add("activebtn");
     button7.classList.remove("activebtn");
-
-
   };
+
 
 
   const dt = Object.values(Temps).reverse().slice(0, 11);
@@ -326,7 +347,7 @@ export default function SumaryPage() {
                   className="activebtn"
                   onClick={() => {
                     toggleClass7();
-                    toggleReplay6()
+                    toggleReplay6();
                   }}
                 >
                   <img src={pauseicon} />
@@ -335,7 +356,7 @@ export default function SumaryPage() {
                   id="button8"
                   onClick={() => {
                     toggleClass8();
-                    toggleReplay6()
+                    toggleReplay6();
                   }}
                 >
                   <img src={playicon} />
@@ -345,7 +366,9 @@ export default function SumaryPage() {
                 </button>
               </div>
               <div className="buttons">
-                <p>Ấn để {replay1Status === "1" ? "tắt" : "bật"} bóng đèn trong </p>
+                <p>
+                  Ấn để {replay1Status === "1" ? "tắt" : "bật"} bóng đèn trong{" "}
+                </p>
                 <button
                   id="light"
                   onClick={() => {
@@ -357,7 +380,9 @@ export default function SumaryPage() {
                 </button>
               </div>
               <div className="buttons">
-                <p>Ấn để {replay2Status === "1" ? "tắt" : "bật"} bóng đèn ngoài </p>
+                <p>
+                  Ấn để {replay2Status === "1" ? "tắt" : "bật"} bóng đèn ngoài{" "}
+                </p>
                 <button
                   id="fan"
                   onClick={() => {
@@ -381,13 +406,15 @@ export default function SumaryPage() {
                 </button>
               </div>
               <div className="buttons">
-                <p>Ấn để {replay4Status === "1" ? "tắt" : "bật"} bơm   </p>
+                <p>Ấn để {replay4Status === "1" ? "tắt" : "bật"} bơm </p>
                 <button
                   id="button4"
                   onClick={() => {
                     toggleReplay4();
                     toggleClass("button4");
                   }}
+                  className={replay4Status === "1" ? "actives" : ""}
+
                 >
                   <div className="circal"></div>
                 </button>
@@ -400,7 +427,22 @@ export default function SumaryPage() {
                     toggleReplay5();
                     toggleClass("button5");
                   }}
-                  className={replay5Status === "1" ? "actives" : ""}
+
+                >
+                  <div className="circal"></div>
+                </button>
+              </div>
+
+
+              <div className="buttons">
+                <p>Ấn để {auto === "1" ? "tắt" : "bật"} chế độ tự động </p>
+                <button
+                  id="button9"
+                  onClick={() => {
+                    toggleClass("button9");
+                    toggleAuto()
+                  }}
+                  className={auto === "1" ? "actives" : ""}
                 >
                   <div className="circal"></div>
                 </button>
