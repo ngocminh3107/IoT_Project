@@ -1,13 +1,12 @@
 import React from "react";
-import "./home.scss"
+import "./home.scss";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 function HomePage() {
   return (
     <div>
       <header>
         <nav className="navigation">
-          <div className="menu-icon">
-          </div>
+          <div className="menu-icon"></div>
           <ul className="menu-items">
             <li>
               <a href="#">Home</a>
@@ -27,8 +26,13 @@ function HomePage() {
 
       <section className="hero">
         <div>
+          <h2>
+              ÁP DỤNG CÔNG NGHỆ IOT NUÔI YẾN
+          </h2>
           <p>
-            Please <Link to="/login">login</Link> to continue.
+          <Link to="/login"><button>
+                Login
+              </button></Link> đê tìm hiểu thêm
           </p>
         </div>
       </section>
@@ -92,22 +96,23 @@ function HomePage() {
       <section className="about">
         <h2>About Us</h2>
         <p>
-          The Internet of Things (IoT) is a rapidly growing technology that is
-          expected to have a significant impact on various industries, including
-          manufacturing, healthcare, transportation, and agriculture. IoT
-          devices can collect and transmit vast amounts of data, which can be
-          analyzed to gain insights, optimize processes, and improve efficiency.
-          Some of the key components of an IoT system include sensors, which can
-          detect changes in the physical environment, actuators, which can
-          control physical devices, and connectivity, which enables devices to
-          communicate with each other and with the internet. IoT devices can be
-          controlled remotely, allowing for real-time monitoring and control of
-          various processes. There are many potential benefits of IoT, including
-          improved efficiency, reduced costs, enhanced safety, and increased
-          productivity. For example, IoT can be used to monitor the condition of
-          equipment in real-time, allowing for predictive maintenance and
-          reducing downtime. IoT can also be used to optimize supply chains,
-          improve energy efficiency, and enhance the customer experience.
+          Nuôi chim yến là một ngành công nghiệp thương mại ngày càng quan trọng
+          của đất nước ta kể từ khi xuất hiện vào đầu những năm 2000. Tuy nhiên,
+          việc sử dụng lao động thủ công đã giới hạn việc khai thác đầy đủ tiềm
+          năng của sản phẩm. Với sự tiến bộ của công nghệ ngày nay, triển khai
+          một hệ thống IoT có thể cải thiện chất lượng sản phẩm và giảm thiểu
+          chi phí. Do đó, chủ đề phát triển hệ thống giám sát và điều khiển từ
+          xa cho nhà nuôi chim yến được nhóm chúng em chọn. Nhà đầu tư có thể
+          giám sát và điều khiển hệ thống qua trang web hoặc ứng dụng di động.
+          Việc sử dụng các thiết bị và cảm biến IoT như Raspberry Pi 4, DHT11,
+          ... cho phép hệ thống cung cấp khả năng giám sát thời gian thực cho
+          các thông số như ánh sáng, nhiệt độ và độ ẩm, giúp người dùng duy trì
+          tiêu chuẩn kỹ thuật phù hợp với điều kiện sống của chim yến. Ngoài ra,
+          hệ thống còn được thiết kế để gửi thông báo qua SMS, đảm bảo người
+          dùng có thể được thông báo ngay cả khi họ không có mặt ở gần hệ thống.
+          Hơn nữa, hệ thống được trang bị một camera để phát hiện sự hiện diện
+          của người xung quanh nhà chim. Tính năng này giảm thiểu sự ảnh hưởng
+          đến chim và mang lại sự yên tâm cho nhà đầu tư.
         </p>
       </section>
 
@@ -123,7 +128,7 @@ function HomePage() {
                   alt="IoT 1"
                 />
                 <div className="card-body">
-                  <h5 className="card-title">IoT Device 1</h5>
+                  <h5 className="card-title">Bac</h5>
                   <p className="card-text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Donec hendrerit nisi sit amet justo malesuada, ac laoreet mi
@@ -141,7 +146,7 @@ function HomePage() {
                   alt="IoT 2"
                 />
                 <div className="card-body">
-                  <h5 className="card-title">IoT Device 2</h5>
+                  <h5 className="card-title">hung</h5>
                   <p className="card-text">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                     Donec hendrerit nisi sit amet justo malesuada, ac laoreet mi
@@ -150,69 +155,78 @@ function HomePage() {
                 </div>
               </div>
             </div>
-            <div className="col-md-3">
-              <div className="card">
-                <img
-                  src="path/to/iot-image-3.jpg"
-                  className="card-img-top"
-                  alt="IoT 3"
-                />
-                <div className="card-body">
-                  <h5 className="card-title">IoT Device 3</h5>
-                  <p className="card-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Donec hendrerit nisi sit amet justo malesuada, ac laoreet mi
-                    porttitor.
-                  </p>
-                </div>
-              </div>
-            </div>
+         
             {/* Repeat the same structure for the remaining cards */}
           </div>
         </div>
       </section>
 
       <footer>
-        <div className="footer-container">
-          <div className="footer-logo">{/* website logo */}</div>
-          <div className="footer-menu">
-            <h3>Menu</h3>
-            <ul>
-              <li> Home </li>
-              <li> About Us </li>
-              <li> Categories </li>
-              <li> Contact Us </li>
-            </ul>
+        <div className="mt-190 footer">
+          <div className="footer-wapper fl-r j-sb mb-130 fz22">
+           x
           </div>
-          <div className="footer-categories">
-            <h3>Categories</h3>
-            <ul>
-              <li> Smart Home </li>
-              <li> Wearables </li>
-              <li> Industrial IoT </li>
-              <li> Healthcare </li>
-              <li> Agriculture </li>
-              <li> Transportation </li>
-            </ul>
+          <div className="footer-information row">
+            <h1 className="col-6 title">PROJECT NEWS TO YOUR INBOX</h1>
+            <form action="" className="col-6 form">
+              <div action="" className="control">
+                <input type="text" id="username" name="username" />
+              </div>
+
+              <button className="">SIGN UP</button>
+            </form>
           </div>
-          <div className="footer-social-media">
-            <h3>Connect With Us</h3>
-            <ul>
-              <li>
+          <div className="footer-nav row">
+            <div className="col-3 ">
+              <h3>IOT PROJECT</h3>
+            </div>
+            <div className="col-3 mt-4">
+              <nav className="fz-16 fw-400">
+                <p>
+                  <a>IoT</a>
+                </p>
+                <p>
+                  <a>Rassberry</a>
+                </p>
+                <p>
+                  <a>Architecture</a>
+                </p>
+              </nav>
+            </div>
+            <div className="col-3 mt-4">
+              <nav className="fz-16 fw-400">
+                <p>
+                  <a>Temp</a>
+                </p>
+                <p>
+                  <a>Light</a>
+                </p>
+                <p>
+                  <a>Humiditi</a>
+                </p>
+              </nav>
+            </div>
+            <div className="col-3 mt-4">
+              <nav className="fz-16 fw-400">
+                <p>
+                  <a>Relay</a>
+                </p>
+                <p>
+                  <a>DHT_11</a>
+                </p>
+                <p>
+                  <a>Moudule</a>
+                </p>
+              </nav>
+            </div>
+          </div>
+
+          <div className="footer-infor j-sb1 mt-40 mb-40">
+            <div className="company">
              
-              </li>
-              <li> </li>
-              <li> </li>
-              <li> </li>
-            </ul>
+            </div>
+            <div className="socialmedia"></div>
           </div>
-          <div className="footer-newsletter">
-            <h3>Subscribe to Our Newsletter</h3>
-            {/* newsletter sign-up form */}
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <p>&copy; 2023 IoT World. All Rights Reserved.</p>
         </div>
       </footer>
     </div>

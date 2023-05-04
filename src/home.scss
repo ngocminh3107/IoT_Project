@@ -41,15 +41,13 @@ $body-font-size: 1.2rem;
 
 /* Style the hero section */
 .hero {
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRV-C5s_xVSH32WuTdlylYKJObV6C60rS514K2wn-hUEv86cbvtG1SbVvafBLQIIX8R4p4&usqp=CAU");
+  background-image: url("./img/home-img.jpg");
   background-size: cover;
   background-position: center;
   height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  p {
+  display: flex;  
+  padding:80px 30px;
+  p,h2 {
     font-size: $body-font-size;
     color: $secondary-color;
     
@@ -60,6 +58,24 @@ $body-font-size: 1.2rem;
         text-decoration: underline;
       }
     }
+  }
+  p{
+    margin-top:20px;
+    font-size: 20px;
+    button{
+      padding:10px 20px;
+      border:none;
+      margin-right:10px;
+      border-radius:5px;
+      background-color:rgb(218, 49, 49);
+      color: #ffffff;
+      font-style: bold;
+    }
+  }
+  h2{
+    width:500px;
+    font-size: 80px;
+    font-weight: 600;
   }
 }
 
@@ -138,7 +154,7 @@ $body-font-size: 1.2rem;
   
   p {
     font-size: $body-font-size;
-    color: $secondary-color;
+    color: black;
     line-height: 1.5;
   }
 }
@@ -147,11 +163,90 @@ $body-font-size: 1.2rem;
 .newsletter {
   background-color: $secondary-color;
   padding: 2rem;
-  
+  .container{
+    .list-card{
+      display:flex;
+      flex-direction:row;
+      width: 100%; 
+      justify-content:space-around;
+    }
+ 
+    
+  }
   h2 {
     font-size: $heading-font-size;
     margin-bottom: 2rem;
     color: $primary-color;
+ 
   }
-  
+ 
+}
+
+.footer {
+  background-color: #000000;
+  overflow: hidden;
+}
+
+
+
+
+.footer .footer-information {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0px 80px;
+  margin-bottom: 128px;
+}
+
+.footer .footer-information h1 {
+  color: #FFFFFF;
+  font-size: 80px;
+  font-weight: 600;
+  line-height: 88px;
+}
+
+.footer .footer-information .form {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.footer .footer-information .form input {
+  background-color: #FFFFFF;
+  padding: 13px 15px;
+  width: 300px;
+  margin-right: 12px;
+}
+
+.footer .footer-information .form button {
+  font-size: 14px;
+  color: #000000;
+  text-transform: uppercase;
+  padding: 14px 24px;
+  border: none;
+  outline: none;
+  background-color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+
+.footer-nav >
+h3,
+nav {
+  color: #FFFFFF;
+
+}
+
+.footer-nav {
+  padding: 0px 80px;
+}
+
+.footer-infor{
+  padding: 0px 80px;
+  color: #FFFFFF;
+}
+.footer-infor .socialmedia i {
+  margin-right: 12px;
+  font-size: 20px;
 }

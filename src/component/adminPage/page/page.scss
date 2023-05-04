@@ -83,7 +83,8 @@
                 &-chart {
                     padding-top: 20px;
                     border-radius: 5px;
-                    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+                    box-shadow: rgba(40, 43, 45, 0.2) 0px 8px 24px;
+
 
                     &:hover {
                         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -105,6 +106,7 @@
                         display: flex;
                         align-items: center;
                         margin-bottom: 20px;
+
                         button {
                             background: none;
                             border: none;
@@ -139,7 +141,7 @@
                         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
                     }
 
-               
+
 
                     .buttons {
                         margin-top: 10px;
@@ -165,6 +167,15 @@
                                 border-radius: 100px;
                                 background-color: #0076f5;
                                 float: left;
+            
+                            }
+                            .circals {
+                                height: 28px;
+                                width: 28px;
+                                border-radius: 100px;
+                                background-color: #0076f5;
+                                float: left;
+                                background-color: red;
 
                             }
                         }
@@ -231,7 +242,8 @@
 }
 
 .chart {
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(40, 43, 45, 0.2) 0px 8px 24px;
+
     padding-top: 40px;
 }
 
@@ -273,7 +285,7 @@
     border-radius: 10px;
     display: flex;
     align-items: center;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: rgba(40, 43, 45, 0.2) 0px 8px 24px;
     justify-content: space-between;
 
     video {

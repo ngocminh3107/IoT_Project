@@ -444,7 +444,7 @@ export default function SumaryPage() {
                   }}
                   className={auto === "1" ? "actives" : ""}
                 >
-                  <div className="circal"></div>
+                  <div className="circals"></div>
                 </button>
               </div>
             </div>
