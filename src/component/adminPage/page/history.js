@@ -90,6 +90,13 @@ export default function History() {
         >
           History
         </NavLink>
+        <NavLink
+          to="/login/admin/screenshort"
+          activeClassName="active-link"
+          className="link"
+        >
+          screenshort
+        </NavLink>
       </nav>
       <div className="page__sumary">
         <div className="sumary">

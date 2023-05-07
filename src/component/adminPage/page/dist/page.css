@@ -1,0 +1,291 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.page {
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+}
+.page nav {
+  height: 1000px;
+  position: fixed;
+  background-color: #0a1929;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+}
+.page nav .link {
+  color: #9d9fa0;
+  text-decoration: none;
+  padding: 20px;
+  color: #ffffff;
+}
+.page nav .link:hover {
+  background-color: #0e2237;
+}
+.page__sumary {
+  padding-left: 20%;
+  width: 100%;
+}
+.page__sumary .sumary {
+  padding: 0 30px;
+}
+.page__sumary .sumary .header {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.page__sumary .sumary .header__login {
+  display: flex;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page__sumary .sumary .header__login p {
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.page__sumary .sumary .header__login-img img {
+  border-radius: 100px;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+.page__sumary .sumary__category {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.page__sumary .sumary__statistical {
+  padding: 20px 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+.page__sumary .sumary__statistical-chart {
+  padding-top: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(40, 43, 45, 0.2) 0px 8px 24px;
+}
+.page__sumary .sumary__statistical-chart:hover {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.page__sumary .sumary__statistical-button {
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.page__sumary .sumary__statistical-button .music-bar {
+  margin-top: 10px;
+  width: 100%;
+  justify-content: space-around;
+  display: flex;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.page__sumary .sumary__statistical-button .music-bar button {
+  background: none;
+  border: none;
+  width: 30px;
+  height: 30px;
+}
+.page__sumary .sumary__statistical-button .music-bar button:first-child {
+  margin-top: 10px;
+}
+.page__sumary .sumary__statistical-button .music-bar button:first-child:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.page__sumary .sumary__statistical-button .music-bar button:nth-child(2) {
+  margin-top: -4px;
+}
+.page__sumary .sumary__statistical-button .music-bar button:last-child {
+  margin-top: 10px;
+  transform: rotate(180deg);
+}
+.page__sumary .sumary__statistical-button .music-bar button:last-child:hover {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.page__sumary .sumary__statistical-button:hover {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.page__sumary .sumary__statistical-button .buttons {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.page__sumary .sumary__statistical-button .buttons p {
+  margin-top: 10px;
+  font-weight: 500;
+}
+.page__sumary .sumary__statistical-button .buttons button {
+  border: none;
+  height: 30px;
+  border-radius: 100px;
+  width: 60px;
+  margin-top: 8px;
+}
+.page__sumary .sumary__statistical-button .buttons button .circal {
+  height: 28px;
+  width: 28px;
+  border-radius: 100px;
+  background-color: #0076f5;
+  float: left;
+}
+.page__sumary .sumary__statistical-button .buttons button .circals {
+  height: 28px;
+  width: 28px;
+  border-radius: 100px;
+  background-color: #0076f5;
+  float: left;
+  background-color: red;
+}
+.page__sumary .sumary__history {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+.page__sumary .sumary__history-colum {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.page__sumary .sumary__history-colum p {
+  font-style: bold;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.page__sumary .sumary__history-colum p:nth-child(odd) {
+  padding: 10px 0;
+  background-color: aquamarine;
+}
+.page__temphumi {
+  padding-left: 20%;
+  width: 100%;
+}
+.page__temphumi .block .temp {
+  padding: 0 30px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.page__temphumi .block .humi {
+  margin-top: 55px;
+  padding: 0 30px;
+  padding: 0 30px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.chart {
+  box-shadow: rgba(40, 43, 45, 0.2) 0px 8px 24px;
+  padding-top: 40px;
+}
+
+.header {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header__login {
+  display: flex;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header__login p {
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.header__login-img img {
+  border-radius: 100px;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.cards {
+  width: 260px;
+  border: none;
+  padding: 20px 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  box-shadow: rgba(40, 43, 45, 0.2) 0px 8px 24px;
+  justify-content: space-between;
+}
+.cards video {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+.cards:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.cards .card {
+  border: none;
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+}
+.cards .card h2 {
+  color: #0674f1;
+  font-weight: 800;
+  font-size: 38px;
+}
+.cards .card p {
+  font-size: 23px;
+  font-weight: 500;
+}
+.cards img {
+  height: 70px;
+  width: 60px;
+}
+
+.active {
+  color: #00ffc8;
+  background-color: #29245f;
+}
+
+.actives {
+  display: flex;
+  width: 100%;
+  justify-content: end;
+}
+
+.activebtn {
+  display: none;
+}
+
+.History {
+  padding: 0 30px;
+  margin-top: 70px;
+}
+.History__block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.History__block p {
+  padding: 20px 0px;
+  width: 100%;
+  border-bottom: 1px solid #0a1929;
+}

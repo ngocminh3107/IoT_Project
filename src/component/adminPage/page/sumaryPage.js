@@ -192,7 +192,7 @@ export default function SumaryPage() {
   };
   const toggleReplay4 = () => {
     const newStatus = replay4Status === "1" ? "0" : "1";
-    console.log(newStatus)
+    console.log(newStatus);
     set(child(dbRef, "Relay/relay4/status"), newStatus)
       .then(() => setReplay4Status(newStatus))
       .catch((error) => {
@@ -232,8 +232,6 @@ export default function SumaryPage() {
     button8.classList.add("activebtn");
     button7.classList.remove("activebtn");
   };
-
-
 
   const dt = Object.values(Temps).reverse().slice(0, 11);
   const dh = Object.values(Humis).reverse().slice(0, 11);
@@ -280,6 +278,13 @@ export default function SumaryPage() {
         >
           History
         </NavLink>
+        <NavLink
+          to="/login/admin/screenshort"
+          activeClassName="active-link"
+          className="link"
+        >
+          screenshort
+        </NavLink>
       </nav>
       <div className="page__sumary">
         <div className="sumary">
@@ -315,8 +320,10 @@ export default function SumaryPage() {
               </div>
               <img src={sunicon} />
             </div>
-            <div className="cards"></div>
-          </div>
+            <div className="">
+              <iframe src="http://116.109.96.91:5000/video_feed" width="260" height= "150"></iframe>
+            </div>
+          </div> 
           <div className="sumary__statistical row">
             <div className="sumary__statistical-chart col-7">
               <ResponsiveContainer width="90%" height={400}>
@@ -414,7 +421,6 @@ export default function SumaryPage() {
                     toggleClass("button4");
                   }}
                   className={replay4Status === "1" ? "actives" : ""}
-
                 >
                   <div className="circal"></div>
                 </button>
@@ -427,12 +433,10 @@ export default function SumaryPage() {
                     toggleReplay5();
                     toggleClass("button5");
                   }}
-
                 >
                   <div className="circal"></div>
                 </button>
               </div>
-
 
               <div className="buttons">
                 <p>Ấn để {auto === "1" ? "tắt" : "bật"} chế độ tự động </p>
@@ -440,7 +444,7 @@ export default function SumaryPage() {
                   id="button9"
                   onClick={() => {
                     toggleClass("button9");
-                    toggleAuto()
+                    toggleAuto();
                   }}
                   className={auto === "1" ? "actives" : ""}
                 >

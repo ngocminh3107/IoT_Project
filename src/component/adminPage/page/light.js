@@ -114,6 +114,13 @@ export default function TempHumi() {
         >
           History
         </NavLink>
+        <NavLink
+          to="/login/admin/screenshort"
+          activeClassName="active-link"
+          className="link"
+        >
+          screenshort
+        </NavLink>
       </nav>
 
       <div className="page__temphumi">

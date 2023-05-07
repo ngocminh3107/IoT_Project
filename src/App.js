@@ -7,6 +7,7 @@ import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import TempHumi from "./component/adminPage/page/temp-humi";
 import Light from "./component/adminPage/page/light";
 import History from "./component/adminPage/page/history";
+import ImgScreenshort from "./component/adminPage/page/imgScreenshort";
 import "./app.scss"
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
         <Route path="/login/admin/light" element={<Light />} />
         <Route path="/login/admin/light" element={<Light />} />
         <Route path="/login/admin/history" element={<History />} />
+        <Route path="/login/admin/screenshort" element={<ImgScreenshort />} />
+
       </Routes>
     </>
   );
