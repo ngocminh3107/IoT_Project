@@ -4,6 +4,7 @@ import { getDatabase, ref, child, get, set } from "firebase/database";
 import { dataRef } from "../../../firebase";
 import "./page.scss";
 import adminImg from "../../../img/admin.jpg";
+import * as XLSX from "xlsx/xlsx.mjs";
 
 export default function History() {
   const [Temps, setTemps] = useState("");
@@ -57,7 +58,33 @@ export default function History() {
         });
     }, 1000);
   }, []);
+  const exportToExcel = () => {
+    // Create a new workbook
+    const wb = XLSX.utils.book_new();
 
+    // Convert the data to a worksheet
+    const ws = XLSX.utils.json_to_sheet(
+      [
+        ["Temp"], // Add the title as the header row
+        ...Object.values(Temps)
+          .reverse()
+          .slice(0, 10)
+          .map((value) => ({ value })),
+      ]
+    );
+
+    // Add the worksheet to the workbook
+    XLSX.utils.book_append_sheet(wb, ws, "Lights");
+
+    // Save the workbook as a file
+    XLSX.writeFile(wb, "lights.xlsx");
+  };
+
+  const [activeTab, setActiveTab] = useState(1);
+
+  const handleTabClick = (tabNumber) => {
+    setActiveTab(tabNumber);
+  };
   return (
     <div className="page">
       <nav>
@@ -110,37 +137,116 @@ export default function History() {
             </div>
           </div>
           <div className="date">
-            <h2><b>Lịch sử</b></h2>
+            <h2>
+              <b>Lịch sử</b>
+            </h2>
 
             <p>{new Date().toLocaleString() + ""}</p>
           </div>
-          <div className="sumary__history">
-            <div className="sumary__history-colum">
-            <p><b>Nhiệt độ</b></p>
-              {Object.values(Temps)
-                .reverse()
-                .slice(0, 10)
-                .map((value, index) => (
-                  <p key={index}>{value}</p>
-                ))}
-            </div>
-            <div className="sumary__history-colum">
-            <p><b>Độ ẩm</b></p>
-              {Object.values(Humis)
-                .reverse()
-                .slice(0, 10)
-                .map((value, index) => (
-                  <p key={index}>{value}</p>
-                ))}
-            </div>
-            <div className="sumary__history-colum">
-            <p><b>Ánh sáng</b></p>
-              {Object.values(Lights)
-                .reverse()
-                .slice(0, 10)
-                .map((value, index) => (
-                  <p key={index}>{value}</p>
-                ))}
+
+          <button onClick={exportToExcel}>Export to Excel</button>
+          <div>
+            <ul>
+              <li
+                onClick={() => handleTabClick(1)}
+                className={activeTab === 1 ? "active" : ""}
+              >
+                Tab 1
+              </li>
+              <li
+                onClick={() => handleTabClick(2)}
+                className={activeTab === 2 ? "active" : ""}
+              >
+                Tab 2
+              </li>
+            </ul>
+            <div>
+              {activeTab === 1 && (
+                <div>
+                  <div className="date">
+                    <h2>
+                      <b>Lịch sử</b>
+                    </h2>
+
+                    <p>{new Date().toLocaleString() + ""}</p>
+                  </div>
+                  <div className="sumary__history">
+                    <div className="sumary__history-colum">
+                      <p>
+                        <b>Nhiệt độ</b>
+                      </p>
+                      {Object.values(Temps)
+                        .reverse()
+                        .slice(0, 10)
+                        .map((value, index) => (
+                          <p key={index}>{value}</p>
+                        ))}
+                    </div>
+                    <div className="sumary__history-colum">
+                      <p>
+                        <b>Độ ẩm</b>
+                      </p>
+                      {Object.values(Humis)
+                        .reverse()
+                        .slice(0, 10)
+                        .map((value, index) => (
+                          <p key={index}>{value}</p>
+                        ))}
+                    </div>
+                    <div className="sumary__history-colum">
+                      <p>
+                        <b>Ánh sáng</b>
+                      </p>
+                      {Object.values(Lights)
+                        .reverse()
+                        .slice(0, 10)
+                        .map((value, index) => (
+                          <p key={index}>{value}</p>
+                        ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+              {activeTab === 2 && (
+                <div>
+                  {" "}
+                  <div className="sumary__history">
+                    <div className="sumary__history-colum">
+                      <p>
+                        <b>Nhiệt độ</b>
+                      </p>
+                      {Object.values(Temps)
+                        .reverse()
+                        .slice(0, 10)
+                        .map((value, index) => (
+                          <p key={index}>{value}</p>
+                        ))}
+                    </div>
+                    <div className="sumary__history-colum">
+                      <p>
+                        <b>Độ ẩm</b>
+                      </p>
+                      {Object.values(Humis)
+                        .reverse()
+                        .slice(0, 10)
+                        .map((value, index) => (
+                          <p key={index}>{value}</p>
+                        ))}
+                    </div>
+                    <div className="sumary__history-colum">
+                      <p>
+                        <b>Ánh sáng</b>
+                      </p>
+                      {Object.values(Lights)
+                        .reverse()
+                        .slice(0, 10)
+                        .map((value, index) => (
+                          <p key={index}>{value}</p>
+                        ))}
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

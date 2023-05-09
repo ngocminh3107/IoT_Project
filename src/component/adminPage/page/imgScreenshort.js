@@ -1,12 +1,33 @@
 import { NavLink } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { getDatabase, ref, child, get, set } from "firebase/database";
-import { dataRef } from "../../../firebase";
 import "./page.scss";
 import adminImg from "../../../img/admin.jpg";
+import { storage } from "../../../firebase";
+
+// Get all the images from Storage
 
 export default function ImgScreenshort() {
+  const [files, setFiles] = useState([]);
 
+  useEffect(() => {
+    const fetchImages = async () => {
+      let result = await storage.ref().child("").listAll();
+      let urlPromises = result.items.map(async (imageRef) => {
+        const url = await imageRef.getDownloadURL();
+        const metadata = await imageRef.getMetadata();
+        return { url, timeCreated: metadata.timeCreated };
+      });
+
+      return Promise.all(urlPromises);
+    };
+
+    const loadImages = async () => {
+      const urls = await fetchImages();
+      setFiles(urls);
+    };
+    loadImages();
+  }, []);
 
   return (
     <div className="page">
@@ -49,11 +70,31 @@ export default function ImgScreenshort() {
         </NavLink>
       </nav>
 
-      <div>
-      <p>{new Date().toLocaleString() + ""}</p>
-        <image>
-
-        </image>
+      <div className="page__screenshort">
+        <div className="header">
+        <div>
+            <h2>
+              <b>ImgScreenshort Page</b>
+            </h2>
+          </div>
+          <div className="header__login">
+            <p>Hi, BacHoang</p>
+            <div className="header__login-img">
+              <img src={adminImg} />
+            </div>
+          </div>
+        </div>
+        <div className="categoryImg">
+          <div className="image row">
+            {files &&
+              files.map((file, index) => (
+                <div key={index} className="col-5 image-box">
+                  <img  src={file.url} alt={`Image ${index}`} />
+                  <p>{file.timeCreated.toString()}</p>
+                </div>
+              ))}
+          </div>
+        </div>
       </div>
     </div>
   );
