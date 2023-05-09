@@ -244,35 +244,111 @@
 
         .categoryImg {
             padding: 20px;
+
             .image {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 width: 100%;
-                &-box{
+
+                &-box {
                     display: flex;
                     flex-direction: column;
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     margin-bottom: 20px;
+
                     img {
                         width: 400px;
                         height: 280px;
                         border-radius: 10px;
                     }
-                    p{
+
+                    p {
                         margin-top: 8px;
                         width: 100%;
                         text-align: center;
                     }
                 }
-              
+
             }
         }
     }
 
+    &__history {
+        padding-left: 20%;
+        width: 100%;
 
+        .historybox {
+            padding: 30px 30px;
+
+            &__tab {
+                margin-bottom: 20px;
+                width: 400px;
+                display: flex;
+                flex-direction: row;
+
+                div {
+                    width: 200px;
+                    height: 40px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                &-intab{
+                    margin-top: 30px;
+                    margin-bottom: 30px;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    div{
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: 10px 20px;
+                    }
+                }
+            }
+
+            &__data {
+                .data {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+
+                    &__colum {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        flex-direction: column;
+
+                        .datas {
+                            width: 100%;
+                            text-align: center;
+                            border-bottom: 1px solid black;
+                            padding: 10px;
+                        }
+                    }
+                }
+
+                button {
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    background: rgb(244, 101, 12);
+                    background: linear-gradient(90deg, rgba(244, 101, 12, 1) 0%, rgba(0, 212, 255, 1) 100%);
+                    color: #ffffff;
+                    font-weight: 500;
+                }
+            }
+
+
+        }
+    }
 }
 
 .chart {
