@@ -10,12 +10,12 @@ export default function History() {
   const [Temps, setTemps] = useState("");
   const [Lights, setLights] = useState("");
   const [Humis, setHumi] = useState("");
-const [relay1s,setRelay1s] = useState("");
-const [relay2s,setRelay2s] = useState("");
-const [relay3s,setRelay3s] = useState("");
-const [relay4s,setRelay4s] = useState("");
-const [relay5s,setRelay5s] = useState("");
-const [relay6s,setRelay6s] = useState("");
+  const [relay1s, setRelay1s] = useState("");
+  const [relay2s, setRelay2s] = useState("");
+  const [relay3s, setRelay3s] = useState("");
+  const [relay4s, setRelay4s] = useState("");
+  const [relay5s, setRelay5s] = useState("");
+  const [relay6s, setRelay6s] = useState("");
 
   const dbRef = ref(getDatabase(dataRef));
   useEffect(() => {
@@ -65,7 +65,7 @@ const [relay6s,setRelay6s] = useState("");
   }, []);
 
   //relayhis
-useEffect(() => {
+  useEffect(() => {
     setInterval(() => {
       get(child(dbRef, `Relay/relay1/relay1his`))
         .then((snapshot) => {
@@ -81,10 +81,83 @@ useEffect(() => {
     }, 1000);
   }, []);
 
-
-
-
-  
+  useEffect(() => {
+    setInterval(() => {
+      get(child(dbRef, `Relay/relay2/relay2his`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            setRelay2s(snapshot.val());
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, 1000);
+  }, []);
+  useEffect(() => {
+    setInterval(() => {
+      get(child(dbRef, `Relay/relay3/relay3his`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            setRelay3s(snapshot.val());
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, 1000);
+  }, []);
+  useEffect(() => {
+    setInterval(() => {
+      get(child(dbRef, `Relay/relay4/relay4his`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            setRelay4s(snapshot.val());
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, 1000);
+  }, []);
+  useEffect(() => {
+    setInterval(() => {
+      get(child(dbRef, `Relay/relay6/relay6his`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            setRelay6s(snapshot.val());
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, 1000);
+  }, []);
+  useEffect(() => {
+    setInterval(() => {
+      get(child(dbRef, `Relay/relay5/relay5his`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            setRelay5s(snapshot.val());
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, 1000);
+  }, []);
+  const currentDate = new Date();
+  const formattedDate = currentDate.toDateString();
   const exportToExcel = () => {
     // Create a new workbook
     const wb = XLSX.utils.book_new();
@@ -110,7 +183,6 @@ useEffect(() => {
   const [activeTab, setActiveTab] = useState(1);
   const [activeTabs, setActiveTabs] = useState(1);
 
-
   const handleTabClick = (tabNumber) => {
     setActiveTab(tabNumber);
   };
@@ -127,35 +199,35 @@ useEffect(() => {
           activeClassName="active-link"
           className="link"
         >
-          Sumary
+          Tổng quan
         </NavLink>
         <NavLink
           to="/login/admin/temp-humi"
           activeClassName="active-link"
           className="link"
         >
-          Temp and Humi
+          Nhệt độ và độ ẩm
         </NavLink>
         <NavLink
           to="/login/admin/light"
           activeClassName="active-link"
           className="link"
         >
-          Light
+          Ánh sáng
         </NavLink>
         <NavLink
           to="/login/admin/history"
           activeClassName="active-link"
           className="link"
         >
-          History
+          Lịch sử hoạt động
         </NavLink>
         <NavLink
           to="/login/admin/screenshort"
           activeClassName="active-link"
           className="link"
         >
-          screenshort
+          Ảnh
         </NavLink>
       </nav>
       <div className="page__history">
@@ -245,39 +317,39 @@ useEffect(() => {
                   <div className="historybox__tab-intab">
                     <div
                       onClick={() => handleTabClicks(1)}
-                      className={activeTabs === 1 ? "active" : ""}
+                      className={activeTabs === 1 ? "activetab" : ""}
                     >
                       Đèn sưởi ấm
                     </div>
                     <div
                       onClick={() => handleTabClicks(2)}
-                      className={activeTabs === 2 ? "active" : ""}
+                      className={activeTabs === 2 ? "activetab" : ""}
                     >
                       Đèn đuổi cú
                     </div>
                     <div
                       onClick={() => handleTabClicks(3)}
-                      className={activeTabs === 3 ? "active" : ""}
+                      className={activeTabs === 3 ? "activetab" : ""}
                     >
                       Quạt
                     </div>
                     <div
                       onClick={() => handleTabClicks(4)}
-                      className={activeTabs === 4 ? "active" : ""}
+                      className={activeTabs === 4 ? "activetab" : ""}
                     >
                       Bơm
                     </div>
                     <div
                       onClick={() => handleTabClicks(5)}
-                      className={activeTabs === 5 ? "active" : ""}
+                      className={activeTabs === 5 ? "activetab" : ""}
                     >
                       Bật phun sương
                     </div>
                     <div
                       onClick={() => handleTabClicks(6)}
-                      className={activeTabs === 6 ? "active" : ""}
+                      className={activeTabs === 6 ? "activetab" : ""}
                     >
-                      Chế độ auto
+                      Loa
                     </div>
                   </div>
                   <div className="equiement">
@@ -288,12 +360,12 @@ useEffect(() => {
                             <p>
                               <b>Thời gian</b>
                             </p>
-                            {Object.values(Temps)
+                            {Object.values(relay1s)
                               .reverse()
                               .slice(0, 10)
                               .map((value, index) => (
                                 <p key={index} className="datas">
-                                  {value}
+                                  {formattedDate}
                                 </p>
                               ))}
                           </div>
@@ -301,12 +373,12 @@ useEffect(() => {
                             <p>
                               <b>Thiết bị</b>
                             </p>
-                            {Object.values(Lights)
+                            {Object.values(relay1s)
                               .reverse()
                               .slice(0, 10)
                               .map((value, index) => (
                                 <p key={index} className="datas">
-                                  Loa
+                                  Đèn sưởi ấm
                                 </p>
                               ))}
                           </div>
@@ -327,30 +399,235 @@ useEffect(() => {
                         <button onClick={exportToExcel}>Export to Excel</button>
                       </div>
                     )}
-                    {activeTabs ===2 &&(
+                    {activeTabs === 2 && (
                       <div>
-                        2
+                      <div className="data">
+                        <div className="data__colum">
+                          <p>
+                            <b>Thời gian</b>
+                          </p>
+                          {Object.values(relay2s)
+                            .reverse()
+                            .slice(0, 10)
+                            .map((value, index) => (
+                              <p key={index} className="datas">
+                                {formattedDate}
+                              </p>
+                            ))}
+                        </div>
+                        <div className="data__colum">
+                          <p>
+                            <b>Thiết bị</b>
+                          </p>
+                          {Object.values(relay2s)
+                            .reverse()
+                            .slice(0, 10)
+                            .map((value, index) => (
+                              <p key={index} className="datas">
+                                Đèn đuổi cú
+                              </p>
+                            ))}
+                        </div>
+                        <div className="data__colum">
+                          <p>
+                            <b>Trạng thái</b>
+                          </p>
+                          {Object.values(relay2s)
+                            .reverse()
+                            .slice(0, 10)
+                            .map((value, index) => (
+                              <p key={index} className="datas">
+                                {value === 1 ? "on" : "off"}
+                              </p>
+                            ))}
+                        </div>
+                      </div>
+                      <button onClick={exportToExcel}>Export to Excel</button>
+                    </div>
+                    )}
+                    {activeTabs === 3 && (
+                      <div>
+                      <div className="data">
+                        <div className="data__colum">
+                          <p>
+                            <b>Thời gian</b>
+                          </p>
+                          {Object.values(relay3s)
+                            .reverse()
+                            .slice(0, 10)
+                            .map((value, index) => (
+                              <p key={index} className="datas">
+                                {formattedDate}
+                              </p>
+                            ))}
+                        </div>
+                        <div className="data__colum">
+                          <p>
+                            <b>Thiết bị</b>
+                          </p>
+                          {Object.values(relay3s)
+                            .reverse()
+                            .slice(0, 10)
+                            .map((value, index) => (
+                              <p key={index} className="datas">
+                                Quạt
+                              </p>
+                            ))}
+                        </div>
+                        <div className="data__colum">
+                          <p>
+                            <b>Trạng thái</b>
+                          </p>
+                          {Object.values(relay3s)
+                            .reverse()
+                            .slice(0, 10)
+                            .map((value, index) => (
+                              <p key={index} className="datas">
+                                {value === 1 ? "on" : "off"}
+                              </p>
+                            ))}
+                        </div>
+                      </div>
+                      <button onClick={exportToExcel}>Export to Excel</button>
+                    </div>
+                    )}
+                    {activeTabs === 4 && (
+                      <div>
+                        <div className="data">
+                          <div className="data__colum">
+                            <p>
+                              <b>Thời gian</b>
+                            </p>
+                            {Object.values(relay4s)
+                              .reverse()
+                              .slice(0, 10)
+                              .map((value, index) => (
+                                <p key={index} className="datas">
+                                  {value}
+                                </p>
+                              ))}
+                          </div>
+                          <div className="data__colum">
+                            <p>
+                              <b>Thiết bị</b>
+                            </p>
+                            {Object.values(relay4s)
+                              .reverse()
+                              .slice(0, 10)
+                              .map((value, index) => (
+                                <p key={index} className="datas">
+                                  Bơm
+                                </p>
+                              ))}
+                          </div>
+                          <div className="data__colum">
+                            <p>
+                              <b>Trạng thái</b>
+                            </p>
+                            {Object.values(relay4s)
+                              .reverse()
+                              .slice(0, 10)
+                              .map((value, index) => (
+                                <p key={index} className="datas">
+                                  {value === 1 ? "on" : "off"}
+                                </p>
+                              ))}
+                          </div>
+                        </div>
+                        <button onClick={exportToExcel}>Export to Excel</button>
                       </div>
                     )}
-                    {activeTabs ===3 &&(
+                    {activeTabs === 5 && (
                       <div>
-                        3
+                      <div className="data">
+                        <div className="data__colum">
+                          <p>
+                            <b>Thời gian</b>
+                          </p>
+                          {Object.values(relay5s)
+                            .reverse()
+                            .slice(0, 10)
+                            .map((value, index) => (
+                              <p key={index} className="datas">
+                                {formattedDate}
+                              </p>
+                            ))}
+                        </div>
+                        <div className="data__colum">
+                          <p>
+                            <b>Thiết bị</b>
+                          </p>
+                          {Object.values(relay5s)
+                            .reverse()
+                            .slice(0, 10)
+                            .map((value, index) => (
+                              <p key={index} className="datas">
+                                Phun sương
+                              </p>
+                            ))}
+                        </div>
+                        <div className="data__colum">
+                          <p>
+                            <b>Trạng thái</b>
+                          </p>
+                          {Object.values(relay5s)
+                            .reverse()
+                            .slice(0, 10)
+                            .map((value, index) => (
+                              <p key={index} className="datas">
+                                {value === 1 ? "on" : "off"}
+                              </p>
+                            ))}
+                        </div>
                       </div>
+                      <button onClick={exportToExcel}>Export to Excel</button>
+                    </div>
                     )}
-                    {activeTabs ===4 &&(
+                    {activeTabs === 6 && (
                       <div>
-                        4
+                      <div className="data">
+                        <div className="data__colum">
+                          <p>
+                            <b>Thời gian</b>
+                          </p>
+                          {Object.values(relay6s)
+                            .reverse()
+                            .slice(0, 10)
+                            .map((value, index) => (
+                              <p key={index} className="datas">
+                                {formattedDate}
+                              </p>
+                            ))}
+                        </div>
+                        <div className="data__colum">
+                          <p>
+                            <b>Thiết bị</b>
+                          </p>
+                          {Object.values(relay6s)
+                            .reverse()
+                            .slice(0, 10)
+                            .map((value, index) => (
+                              <p key={index} className="datas">
+                                Loa
+                              </p>
+                            ))}
+                        </div>
+                        <div className="data__colum">
+                          <p>
+                            <b>Trạng thái</b>
+                          </p>
+                          {Object.values(relay6s)
+                            .reverse()
+                            .slice(0, 10)
+                            .map((value, index) => (
+                              <p key={index} className="datas">
+                                {value === 1 ? "on" : "off"}
+                              </p>
+                            ))}
+                        </div>
                       </div>
-                    )}
-                    {activeTabs ===5 &&(
-                      <div>
-                        5
-                      </div>
-                    )}
-                    {activeTabs ===6 &&(
-                      <div>
-                        6
-                      </div>
+                      <button onClick={exportToExcel}>Export to Excel</button>
+                    </div>
                     )}
                   </div>
                 </div>

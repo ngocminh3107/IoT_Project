@@ -83,7 +83,7 @@
                 &-chart {
                     padding-top: 20px;
                     border-radius: 5px;
-                    box-shadow: rgba(40, 43, 45, 0.2) 0px 8px 24px;
+                    box-shadow: rgba(0, 0, 0, 0.6) 0px 8px 24px;
 
 
                     &:hover {
@@ -415,7 +415,6 @@
         justify-content: space-between;
 
         h2 {
-            color: rgb(6, 116, 241);
             font-weight: 800;
             font-size: 38px;
         }
@@ -437,6 +436,12 @@
 .active {
     color: #00ffc8;
     background-color: rgb(41, 36, 95);
+}
+
+.activetab {
+    color: rgb(240, 137, 19);
+    border-bottom: 2px solid  rgb(240, 137, 19);
+    font-weight: bold;
 }
 
 .actives {
@@ -468,4 +473,22 @@
             border-bottom: 1px solid #0a1929;
         }
     }
+}
+
+.status-red{
+    padding: 5px 10px;
+    background-color: rgb(255, 0, 0);
+}
+.status-green{
+    padding: 5px 10px;
+    background-color: rgb(0, 255, 0);
+}
+.tempcolor{
+    color: red;
+}
+.humicolor{
+    color:#0076f5
+}
+.lightcolor{
+    color: #FFD700;
 }

@@ -255,35 +255,35 @@ export default function SumaryPage() {
           activeClassName="active-link"
           className="link"
         >
-          Sumary
+          Tổng quan
         </NavLink>
         <NavLink
           to="/login/admin/temp-humi"
           activeClassName="active-link"
           className="link"
         >
-          Temp and Humi
+          Nhệt độ và độ ẩm
         </NavLink>
         <NavLink
           to="/login/admin/light"
           activeClassName="active-link"
           className="link"
         >
-          Light
+          Ánh sáng
         </NavLink>
         <NavLink
           to="/login/admin/history"
           activeClassName="active-link"
           className="link"
         >
-          History
+          Lịch sử hoạt động
         </NavLink>
         <NavLink
           to="/login/admin/screenshort"
           activeClassName="active-link"
           className="link"
         >
-          screenshort
+          Ảnh
         </NavLink>
       </nav>
       <div className="page__sumary">
@@ -300,14 +300,14 @@ export default function SumaryPage() {
           <div className="sumary__category">
             <div className="cards ">
               <div className="card">
-                <h2>{Temp.Temperature}</h2>
+                <h2 className="tempcolor">{Temp.Temperature}</h2>
                 <p>Nhiệt Độ</p>
               </div>
               <img src={tempicon} />
             </div>
             <div className="cards">
               <div className="card">
-                <h2>{Temp.Humidity}</h2>
+                <h2 className="humicolor">{Temp.Humidity}</h2>
                 <p>Độ Ẩm</p>
               </div>
               <img src={humiicon} />
@@ -315,7 +315,7 @@ export default function SumaryPage() {
 
             <div className="cards ">
               <div className="card">
-                <h2>{Light.Light}</h2>
+                <h2 className="lightcolor">{Light.Light}</h2>
                 <p>Ánh sáng</p>
               </div>
               <img src={sunicon} />
@@ -339,7 +339,7 @@ export default function SumaryPage() {
                     stroke="#f71505"
                   />
                   <Line type="monotone" dataKey="humidity" stroke="#0511f7" />
-                  <Line type="monotone" dataKey="light" stroke="#15ff00" />
+                  <Line type="monotone" dataKey="light" stroke="#FFD700" />
                 </LineChart>
               </ResponsiveContainer>
             </div>

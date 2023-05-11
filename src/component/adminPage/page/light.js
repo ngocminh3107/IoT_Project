@@ -91,35 +91,35 @@ export default function TempHumi() {
           activeClassName="active-link"
           className="link"
         >
-          Sumary
+          Tổng quan
         </NavLink>
         <NavLink
           to="/login/admin/temp-humi"
           activeClassName="active-link"
           className="link"
         >
-          Temp and Humi
+          Nhệt độ và độ ẩm
         </NavLink>
         <NavLink
           to="/login/admin/light"
           activeClassName="active-link"
           className="link"
         >
-          Light
+          Ánh sáng
         </NavLink>
         <NavLink
           to="/login/admin/history"
           activeClassName="active-link"
           className="link"
         >
-          History
+          Lịch sử hoạt động
         </NavLink>
         <NavLink
           to="/login/admin/screenshort"
           activeClassName="active-link"
           className="link"
         >
-          screenshort
+          Ảnh
         </NavLink>
       </nav>
 
