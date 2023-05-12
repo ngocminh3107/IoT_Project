@@ -98,7 +98,7 @@ export default function TempHumi() {
           activeClassName="active-link"
           className="link"
         >
-          Nhệt độ và độ ẩm
+          Nhiệt độ và độ ẩm
         </NavLink>
         <NavLink
           to="/login/admin/light"
@@ -158,7 +158,10 @@ export default function TempHumi() {
                   <YAxis domain={[0, 1000]} />
                   <Tooltip />
                   <Legend />
-                  <Line type="monotone" dataKey="light" stroke="#15ff00" />
+                  <Line type="monotone"
+                    dataKey="light"
+                    stroke="#FFD700"
+                    strokeWidth={3}/>
                 </LineChart>
               </ResponsiveContainer>
             </div>

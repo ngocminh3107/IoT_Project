@@ -25,7 +25,6 @@ function App() {
         <Route path="/login/admin/light" element={<Light />} />
         <Route path="/login/admin/history" element={<History />} />
         <Route path="/login/admin/screenshort" element={<ImgScreenshort />} />
-
       </Routes>
     </>
   );

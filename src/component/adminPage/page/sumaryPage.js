@@ -262,7 +262,7 @@ export default function SumaryPage() {
           activeClassName="active-link"
           className="link"
         >
-          Nhệt độ và độ ẩm
+          Nhiệt độ và độ ẩm
         </NavLink>
         <NavLink
           to="/login/admin/light"
@@ -341,19 +341,19 @@ export default function SumaryPage() {
                     type="monotone"
                     dataKey="temperature"
                     stroke="#f71505"
-                    strokeWidth={2}
+                    strokeWidth={3}
                   />
                   <Line
                     type="monotone"
                     dataKey="humidity"
                     stroke="#0511f7"
-                    strokeWidth={2}
+                    strokeWidth={3}
                   />
                   <Line
                     type="monotone"
                     dataKey="light"
                     stroke="#FFD700"
-                    strokeWidth={2}
+                    strokeWidth={3}
                   />
                 </LineChart>
               </ResponsiveContainer>

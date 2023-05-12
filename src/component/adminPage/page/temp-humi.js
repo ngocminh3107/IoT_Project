@@ -79,7 +79,7 @@ export default function TempHumi() {
           activeClassName="active-link"
           className="link"
         >
-          Nhệt độ và độ ẩm
+          Nhiệt độ và độ ẩm
         </NavLink>
         <NavLink
           to="/login/admin/light"

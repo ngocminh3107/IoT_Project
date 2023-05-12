@@ -206,7 +206,7 @@ export default function History() {
           activeClassName="active-link"
           className="link"
         >
-          Nhệt độ và độ ẩm
+          Nhiệt độ và độ ẩm
         </NavLink>
         <NavLink
           to="/login/admin/light"
@@ -391,7 +391,9 @@ export default function History() {
                               .slice(0, 10)
                               .map((value, index) => (
                                 <p key={index} className="datas">
-                                  {value === 1 ? "on" : "off"}
+                                  <a className={value === 1 ? "status-green" : "status-red"}>
+                                    {value === 1 ? "on" : "off"}
+                                  </a>
                                 </p>
                               ))}
                           </div>
@@ -401,95 +403,100 @@ export default function History() {
                     )}
                     {activeTabs === 2 && (
                       <div>
-                      <div className="data">
-                        <div className="data__colum">
-                          <p>
-                            <b>Thời gian</b>
-                          </p>
-                          {Object.values(relay2s)
-                            .reverse()
-                            .slice(0, 10)
-                            .map((value, index) => (
-                              <p key={index} className="datas">
-                                {formattedDate}
-                              </p>
-                            ))}
+                        <div className="data">
+                          <div className="data__colum">
+                            <p>
+                              <b>Thời gian</b>
+                            </p>
+                            {Object.values(relay2s)
+                              .reverse()
+                              .slice(0, 10)
+                              .map((value, index) => (
+                                <p key={index} className="datas">
+                                  {formattedDate}
+                                </p>
+                              ))}
+                          </div>
+                          <div className="data__colum">
+                            <p>
+                              <b>Thiết bị</b>
+                            </p>
+                            {Object.values(relay2s)
+                              .reverse()
+                              .slice(0, 10)
+                              .map((value, index) => (
+                                <p key={index} className="datas">
+                                  Đèn đuổi cú
+                                </p>
+                              ))}
+                          </div>
+                          <div className="data__colum">
+                            <p>
+                              <b>Trạng thái</b>
+                            </p>
+                            {Object.values(relay2s)
+                              .reverse()
+                              .slice(0, 10)
+                              .map((value, index) => (
+                                <p key={index} className="datas">
+                                  <a className={value === 1 ? "status-green" : "status-red"}>
+                                    {value === 1 ? "on" : "off"}
+                                  </a>
+                                </p>
+                              ))}
+                          </div>
                         </div>
-                        <div className="data__colum">
-                          <p>
-                            <b>Thiết bị</b>
-                          </p>
-                          {Object.values(relay2s)
-                            .reverse()
-                            .slice(0, 10)
-                            .map((value, index) => (
-                              <p key={index} className="datas">
-                                Đèn đuổi cú
-                              </p>
-                            ))}
-                        </div>
-                        <div className="data__colum">
-                          <p>
-                            <b>Trạng thái</b>
-                          </p>
-                          {Object.values(relay2s)
-                            .reverse()
-                            .slice(0, 10)
-                            .map((value, index) => (
-                              <p key={index} className="datas">
-                                {value === 1 ? "on" : "off"}
-                              </p>
-                            ))}
-                        </div>
+                        <button onClick={exportToExcel}>Export to Excel</button>
                       </div>
-                      <button onClick={exportToExcel}>Export to Excel</button>
-                    </div>
                     )}
                     {activeTabs === 3 && (
                       <div>
-                      <div className="data">
-                        <div className="data__colum">
-                          <p>
-                            <b>Thời gian</b>
-                          </p>
-                          {Object.values(relay3s)
-                            .reverse()
-                            .slice(0, 10)
-                            .map((value, index) => (
-                              <p key={index} className="datas">
-                                {formattedDate}
-                              </p>
-                            ))}
+                        <div className="data">
+                          <div className="data__colum">
+                            <p>
+                              <b>Thời gian</b>
+                            </p>
+                            {Object.values(relay3s)
+                              .reverse()
+                              .slice(0, 10)
+                              .map((value, index) => (
+                                <p key={index} className="datas">
+                                  {formattedDate}
+
+                                </p>
+                              ))}
+                          </div>
+                          <div className="data__colum">
+                            <p>
+                              <b>Thiết bị</b>
+                            </p>
+                            {Object.values(relay3s)
+                              .reverse()
+                              .slice(0, 10)
+                              .map((value, index) => (
+                                <p key={index} className="datas">
+                                  Quạt
+                                </p>
+                              ))}
+                          </div>
+                          <div className="data__colum">
+                            <p>
+                              <b>Trạng thái</b>
+                            </p>
+                            {Object.values(relay3s)
+                              .reverse()
+                              .slice(0, 10)
+                              .map((value, index) => (
+                                <p key={index} className="datas">
+                                  <a className={value === 1 ? "status-green" : "status-red"}>
+                                    {value === 1 ? "on" : "off"}
+                                  </a>
+                                </p>
+                              ))}
+                          </div>
                         </div>
-                        <div className="data__colum">
-                          <p>
-                            <b>Thiết bị</b>
-                          </p>
-                          {Object.values(relay3s)
-                            .reverse()
-                            .slice(0, 10)
-                            .map((value, index) => (
-                              <p key={index} className="datas">
-                                Quạt
-                              </p>
-                            ))}
-                        </div>
-                        <div className="data__colum">
-                          <p>
-                            <b>Trạng thái</b>
-                          </p>
-                          {Object.values(relay3s)
-                            .reverse()
-                            .slice(0, 10)
-                            .map((value, index) => (
-                              <p key={index} className="datas">
-                                {value === 1 ? "on" : "off"}
-                              </p>
-                            ))}
-                        </div>
+                        <button onClick={exportToExcel}>Export to Excel</button>
                       </div>
-                      <button onClick={exportToExcel}>Export to Excel</button>
-                    </div>
                     )}
                     {activeTabs === 4 && (
                       <div>
@@ -503,7 +510,8 @@ export default function History() {
                               .slice(0, 10)
                               .map((value, index) => (
                                 <p key={index} className="datas">
-                                  {value}
+                                  {formattedDate}
+
                                 </p>
                               ))}
                           </div>
@@ -529,8 +537,10 @@ export default function History() {
                               .slice(0, 10)
                               .map((value, index) => (
                                 <p key={index} className="datas">
+                                <a className={value===1 ? "status-green": "status-red"}>
                                   {value === 1 ? "on" : "off"}
-                                </p>
+                                </a>
+                              </p>
                               ))}
                           </div>
                         </div>
@@ -539,95 +549,99 @@ export default function History() {
                     )}
                     {activeTabs === 5 && (
                       <div>
-                      <div className="data">
-                        <div className="data__colum">
-                          <p>
-                            <b>Thời gian</b>
-                          </p>
-                          {Object.values(relay5s)
-                            .reverse()
-                            .slice(0, 10)
-                            .map((value, index) => (
-                              <p key={index} className="datas">
-                                {formattedDate}
-                              </p>
-                            ))}
+                        <div className="data">
+                          <div className="data__colum">
+                            <p>
+                              <b>Thời gian</b>
+                            </p>
+                            {Object.values(relay5s)
+                              .reverse()
+                              .slice(0, 10)
+                              .map((value, index) => (
+                                <p key={index} className="datas">
+                                  {formattedDate}
+                                </p>
+                              ))}
+                          </div>
+                          <div className="data__colum">
+                            <p>
+                              <b>Thiết bị</b>
+                            </p>
+                            {Object.values(relay5s)
+                              .reverse()
+                              .slice(0, 10)
+                              .map((value, index) => (
+                                <p key={index} className="datas">
+                                  Phun sương
+                                </p>
+                              ))}
+                          </div>
+                          <div className="data__colum">
+                            <p>
+                              <b>Trạng thái</b>
+                            </p>
+                            {Object.values(relay5s)
+                              .reverse()
+                              .slice(0, 10)
+                              .map((value, index) => (
+                                <p key={index} className="datas">
+                                  <a className={value===1 ? "status-green": "status-red"}>
+                                    {value === 1 ? "on" : "off"}
+                                  </a>
+                                </p>
+                              ))}
+                          </div>
                         </div>
-                        <div className="data__colum">
-                          <p>
-                            <b>Thiết bị</b>
-                          </p>
-                          {Object.values(relay5s)
-                            .reverse()
-                            .slice(0, 10)
-                            .map((value, index) => (
-                              <p key={index} className="datas">
-                                Phun sương
-                              </p>
-                            ))}
-                        </div>
-                        <div className="data__colum">
-                          <p>
-                            <b>Trạng thái</b>
-                          </p>
-                          {Object.values(relay5s)
-                            .reverse()
-                            .slice(0, 10)
-                            .map((value, index) => (
-                              <p key={index} className="datas">
-                                {value === 1 ? "on" : "off"}
-                              </p>
-                            ))}
-                        </div>
+                        <button onClick={exportToExcel}>Export to Excel</button>
                       </div>
-                      <button onClick={exportToExcel}>Export to Excel</button>
-                    </div>
                     )}
                     {activeTabs === 6 && (
                       <div>
-                      <div className="data">
-                        <div className="data__colum">
-                          <p>
-                            <b>Thời gian</b>
-                          </p>
-                          {Object.values(relay6s)
-                            .reverse()
-                            .slice(0, 10)
-                            .map((value, index) => (
-                              <p key={index} className="datas">
-                                {formattedDate}
+                        <div className="data">
+                          <div className="data__colum">
+                            <p>
+                              <b>Thời gian</b>
+                            </p>
+                            {Object.values(relay6s)
+                              .reverse()
+                              .slice(0, 10)
+                              .map((value, index) => (
+                                <p key={index} className="datas">
+                                  {formattedDate}
+                                </p>
+                              ))}
+                          </div>
+                          <div className="data__colum">
+                            <p>
+                              <b>Thiết bị</b>
+                            </p>
+                            {Object.values(relay6s)
+                              .reverse()
+                              .slice(0, 10)
+                              .map((value, index) => (
+                                <p key={index} className="datas">
+                                  Loa
+                                </p>
+                              ))}
+                          </div>
+                          <div className="data__colum">
+                            <p>
+                              <b>Trạng thái</b>
+                            </p>
+                            {Object.values(relay6s)
+                              .reverse()
+                              .slice(0, 10)
+                              .map((value, index) => (
+                                <p key={index} className="datas">
+                                <a className={value===1 ? "status-green": "status-red"}>
+                                  {value === 1 ? "on" : "off"}
+                                </a>
                               </p>
-                            ))}
+                              ))}
+                          </div>
                         </div>
-                        <div className="data__colum">
-                          <p>
-                            <b>Thiết bị</b>
-                          </p>
-                          {Object.values(relay6s)
-                            .reverse()
-                            .slice(0, 10)
-                            .map((value, index) => (
-                              <p key={index} className="datas">
-                                Loa
-                              </p>
-                            ))}
-                        </div>
-                        <div className="data__colum">
-                          <p>
-                            <b>Trạng thái</b>
-                          </p>
-                          {Object.values(relay6s)
-                            .reverse()
-                            .slice(0, 10)
-                            .map((value, index) => (
-                              <p key={index} className="datas">
-                                {value === 1 ? "on" : "off"}
-                              </p>
-                            ))}
-                        </div>
+                        <button onClick={exportToExcel}>Export to Excel</button>
                       </div>
-                      <button onClick={exportToExcel}>Export to Excel</button>
-                    </div>
                     )}
                   </div>
                 </div>

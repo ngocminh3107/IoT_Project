@@ -308,7 +308,7 @@ p{
                         .datas {
                             width: 100%;
                             text-align: center;
-                            border: 1px solid black;
+                            border-bottom: 1px solid black;
                             padding: 10px;
                         }
                     }
@@ -374,7 +374,7 @@ p{
     border-radius: 10px;
     display: flex;
     align-items: center;
-    box-shadow: rgba(40, 43, 45, 0.2) 0px 8px 24px;
+    box-shadow: rgba(40, 43, 45, 0.9) 0px 8px 24px;
     justify-content: space-between;
 
     video {
@@ -453,12 +453,27 @@ p{
 }
 
 .status-red{
-    padding: 5px 10px;
+    padding: 5px 15px;
     background-color: rgb(255, 0, 0);
+    border-radius: 4px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    &:hover{
+        color: #ffffff;
+    }
+
 }
 .status-green{
-    padding: 5px 10px;
+    padding: 5px 15px;
     background-color: rgb(0, 255, 0);
+    border-radius: 4px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    &:hover{
+        color: #ffffff;
+    }
 }
 .tempcolor{
     color: red;
