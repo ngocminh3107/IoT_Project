@@ -321,9 +321,13 @@ export default function SumaryPage() {
               <img src={sunicon} />
             </div>
             <div className="">
-              <iframe src="http://116.109.96.91:5000/video_feed" width="260" height= "150"></iframe>
+              <iframe
+                src="http://116.109.96.91:5000/video_feed"
+                width="260"
+                height="150"
+              ></iframe>
             </div>
-          </div> 
+          </div>
           <div className="sumary__statistical row">
             <div className="sumary__statistical-chart col-7">
               <ResponsiveContainer width="90%" height={400}>
@@ -337,9 +341,20 @@ export default function SumaryPage() {
                     type="monotone"
                     dataKey="temperature"
                     stroke="#f71505"
+                    strokeWidth={2}
                   />
-                  <Line type="monotone" dataKey="humidity" stroke="#0511f7" />
-                  <Line type="monotone" dataKey="light" stroke="#FFD700" />
+                  <Line
+                    type="monotone"
+                    dataKey="humidity"
+                    stroke="#0511f7"
+                    strokeWidth={2}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="light"
+                    stroke="#FFD700"
+                    strokeWidth={2}
+                  />
                 </LineChart>
               </ResponsiveContainer>
             </div>

@@ -231,7 +231,7 @@ export default function History() {
         </NavLink>
       </nav>
       <div className="page__history">
-        <div className="sumary">
+        <div className="">
           <div className="header">
             <div></div>
             <div className="header__login">

@@ -2,7 +2,9 @@
     padding: 0;
     margin: 0;
 }
-
+p{
+    margin-bottom: 0px;
+}
 .page {
     padding: 0;
     display: flex;
@@ -95,7 +97,7 @@
                     padding: 20px 20px;
                     display: flex;
                     flex-direction: column;
-                    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+                    box-shadow: rgba(149, 157, 165, 0.9) 0px 8px 24px;
 
                     .music-bar {
                         margin-top: 10px;
@@ -184,32 +186,7 @@
                 }
             }
 
-            &__history {
-                display: flex;
-                flex-direction: row;
-                width: 100%;
-                justify-content: space-between;
-                padding: 0 15px;
-
-                &-colum {
-                    width: 100%;
-                    display: flex;
-                    flex-direction: column;
-
-                    p {
-                        font-style: bold;
-                        width: 100%;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-
-                        &:nth-child(odd) {
-                            padding: 10px 0;
-                            background-color: aquamarine;
-                        }
-                    }
-                }
-            }
+        
 
         }
     }
@@ -325,11 +302,13 @@
                         display: flex;
                         align-items: center;
                         flex-direction: column;
-
+                        :first-child{
+                            border-right: none;
+                        }
                         .datas {
                             width: 100%;
                             text-align: center;
-                            border-bottom: 1px solid black;
+                            border: 1px solid black;
                             padding: 10px;
                         }
                     }
@@ -465,11 +444,9 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-
         p {
             padding: 20px 0px;
             width: 100%;
-
             border-bottom: 1px solid #0a1929;
         }
     }
