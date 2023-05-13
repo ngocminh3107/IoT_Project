@@ -56,12 +56,12 @@ export default function SumaryPage() {
     get(child(dbRef, `Relay`))
       .then((snapshot) => {
         if (snapshot.exists()) {
-          setReplay1Status(snapshot.val().relay1);
-          setReplay2Status(snapshot.val().relay2);
-          setReplay3Status(snapshot.val().relay3);
-          setReplay4Status(snapshot.val().relay4);
-          setReplay5Status(snapshot.val().relay5);
-          setReplay6Status(snapshot.val().relay6);
+          setReplay1Status(snapshot.val().relay1.status);
+          setReplay2Status(snapshot.val().relay2.status);
+          setReplay3Status(snapshot.val().relay3.status);
+          setReplay4Status(snapshot.val().relay4.status);
+          setReplay5Status(snapshot.val().relay5.status);
+          setReplay6Status(snapshot.val().relay6.status);
         } else {
           console.log("No data available");
         }
@@ -233,6 +233,11 @@ export default function SumaryPage() {
     button7.classList.remove("activebtn");
   };
 
+
+
+
+
+
   const dt = Object.values(Temps).reverse().slice(0, 11);
   const dh = Object.values(Humis).reverse().slice(0, 11);
   const dl = Object.values(Lights).reverse().slice(0, 11);
@@ -245,6 +250,10 @@ export default function SumaryPage() {
     humidity: dataHumis[index],
     light: dataLights[index],
   }));
+
+
+
+
 
   return (
     <div className="page">
@@ -334,7 +343,7 @@ export default function SumaryPage() {
                 <LineChart data={tvData}>
                   <CartesianGrid strokeDasharray="3 10" />
                   <XAxis />
-                  <YAxis domain={[0, 100]} />
+                  <YAxis domain={[35, 40]} />
                   <Tooltip />
                   <Legend />
                   <Line
@@ -397,6 +406,7 @@ export default function SumaryPage() {
                     toggleClass("light");
                     toggleReplay1();
                   }}
+                  className={replay1Status === "1" ? "actives" : ""}
                 >
                   <div className="circal"></div>
                 </button>
@@ -411,6 +421,8 @@ export default function SumaryPage() {
                     toggleReplay2();
                     toggleClass("fan");
                   }}
+                  className={replay2Status === "1" ? "actives" : ""}
+
                 >
                   <div className="circal"></div>
                 </button>
@@ -423,6 +435,8 @@ export default function SumaryPage() {
                     toggleReplay3();
                     toggleClass("button3");
                   }}
+                  className={replay3Status === "1" ? "actives" : ""}
+
                 >
                   <div className="circal"></div>
                 </button>
@@ -448,6 +462,8 @@ export default function SumaryPage() {
                     toggleReplay5();
                     toggleClass("button5");
                   }}
+                  className ={replay5Status === "1" ? "actives" : ""}
+
                 >
                   <div className="circal"></div>
                 </button>

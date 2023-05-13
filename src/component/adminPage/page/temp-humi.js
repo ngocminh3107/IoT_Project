@@ -15,6 +15,9 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  Bar,
+  BarChart,
+  Area
 } from "recharts";
 
 export default function TempHumi() {
@@ -58,14 +61,28 @@ export default function TempHumi() {
   const dataTemps = dt.reverse();
   const dataHumis = dh.reverse();
 
+
+
+
+
+
   const tvData = dataTemps.map((temperature, index) => ({
     temperature,
     humidity: dataHumis[index],
   }));
+  const temperatures = tvData.map(item => item.temperature);
+  const minTemperature = Math.min(...temperatures);
+  const maxTemperature = Math.max(...temperatures);
+  const humidityValues = tvData.map(item => item.humidity);
+
+  // Find the maximum and minimum values
+  const maxHumidity = Math.max(...humidityValues);
+  const minHumidity = Math.min(...humidityValues);
+
 
   return (
     <div className="page">
-     <nav>
+      <nav>
         <div className="logo"></div>
         <NavLink
           to="/login/admin/"
@@ -136,9 +153,10 @@ export default function TempHumi() {
                 <LineChart data={tvData}>
                   <CartesianGrid strokeDasharray="3 10" />
                   <XAxis />
-                  <YAxis domain={[0, 100]} />
+                  <YAxis domain={[minTemperature, maxTemperature]} />
                   <Tooltip />
                   <Legend />
+
                   <Line
                     type="monotone"
                     dataKey="temperature"
@@ -166,7 +184,8 @@ export default function TempHumi() {
                 <LineChart data={tvData}>
                   <CartesianGrid strokeDasharray="3 10" />
                   <XAxis />
-                  <YAxis domain={[0, 100]} />
+                  <YAxis domain={[minHumidity, maxHumidity]} />
+                  <YAxis />
                   <Tooltip />
                   <Legend />
                   <Line type="monotone" dataKey="humidity" stroke="#0511f7" />

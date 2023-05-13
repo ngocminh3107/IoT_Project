@@ -39,7 +39,7 @@ export default function History() {
         if (snapshot.exists()) {
           setInterval(() => {
             setTemps(snapshot.val());
-          }, 10000);
+          }, 1000);
         } else {
           console.log("No data available");
         }
@@ -161,22 +161,26 @@ export default function History() {
   const exportToExcel = () => {
     // Create a new workbook
     const wb = XLSX.utils.book_new();
-
+  
+    // Get the current day
+    const currentDay = new Date().toLocaleDateString();
+  
     // Convert the data to a worksheet
     const ws = XLSX.utils.json_to_sheet([
       ...Object.values(Temps)
         .reverse()
         .map((value, index) => ({
+          Day: currentDay, // Set the current day as the value for the "Day" column
           Temperature: value,
-          Humidity: Object.values(Humis).reverse()[index], // Use the same index as the Temperature values to get the corresponding Humidity value
-          Light: Object.values(Lights).reverse()[index], // Use the same index as the Temperature values to get the corresponding Light value
+          Humidity: Object.values(Humis).reverse()[index],
+          Light: Object.values(Lights).reverse()[index],
         })),
     ]);
-
+  
     // Add the worksheet to the workbook
-    XLSX.utils.book_append_sheet(wb, ws, "Data");
-
-    // Save the workbook as a file
+    XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
+  
+    // Save the workbook
     XLSX.writeFile(wb, "data.xlsx");
   };
 
@@ -268,6 +272,19 @@ export default function History() {
               {activeTab === 1 && (
                 <div>
                   <div className="data">
+                  <div className="data__colum">
+                            <p>
+                              <b>Thời gian</b>
+                            </p>
+                            {Object.values(relay2s)
+                              .reverse()
+                              .slice(0, 10)
+                              .map((value, index) => (
+                                <p key={index} className="datas">
+                                  {formattedDate}
+                                </p>
+                              ))}
+                          </div>
                     <div className="data__colum">
                       <p>
                         <b>Nhiệt độ</b>
