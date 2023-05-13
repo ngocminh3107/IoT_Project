@@ -81,6 +81,14 @@ export default function TempHumi() {
     humidity: dataHumis[index],
     light: dataLights[index],
   }));
+  const lightValues = tvData.map(item => item.light);
+
+  // Find the maximum and minimum values
+  const maxLight = Math.max(...lightValues);
+  const minLight = Math.min(...lightValues);
+
+
+
 
   return (
     <div className="page">
@@ -155,7 +163,7 @@ export default function TempHumi() {
                 <LineChart data={tvData}>
                   <CartesianGrid strokeDasharray="3 10" />
                   <XAxis />
-                  <YAxis domain={[0, 1000]} />
+                  <YAxis domain={[minLight, maxLight]} />
                   <Tooltip />
                   <Legend />
                   <Line type="monotone"

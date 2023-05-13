@@ -73,22 +73,24 @@ export default function SumaryPage() {
 
   //dht
   useEffect(() => {
-    get(child(dbRef, `DHT`))
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          setInterval(() => {
+    setInterval(() => {
+      get(child(dbRef, `DHT`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
             setTemp(snapshot.val());
-          }, 1000);
-        } else {
-          console.log("No data available");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, 1000);
 
+  }, []);
+  console.log(Temp)
   //BH1750
+
   useEffect(() => {
     setInterval(() => {
       get(child(dbRef, `BH1750`))
@@ -107,12 +109,12 @@ export default function SumaryPage() {
 
   //hiso
   useEffect(() => {
+    setInterval(() => {
+
     get(child(dbRef, `DHT/HumHistory`))
       .then((snapshot) => {
         if (snapshot.exists()) {
-          setInterval(() => {
             setHumi(snapshot.val());
-          }, 1000);
         } else {
           console.log("No data available");
         }
@@ -120,14 +122,16 @@ export default function SumaryPage() {
       .catch((error) => {
         console.error(error);
       });
+    }, 1000);
+
   }, []);
   useEffect(() => {
+    setInterval(() => {
+
     get(child(dbRef, `DHT/TempHistory`))
       .then((snapshot) => {
         if (snapshot.exists()) {
-          setInterval(() => {
             setTemps(snapshot.val());
-          }, 1000);
         } else {
           console.log("No data available");
         }
@@ -135,6 +139,8 @@ export default function SumaryPage() {
       .catch((error) => {
         console.error(error);
       });
+    }, 1000);
+
   }, []);
   useEffect(() => {
     setInterval(() => {
@@ -462,7 +468,7 @@ export default function SumaryPage() {
                     toggleReplay5();
                     toggleClass("button5");
                   }}
-                  className ={replay5Status === "1" ? "actives" : ""}
+                  className={replay5Status === "1" ? "actives" : ""}
 
                 >
                   <div className="circal"></div>

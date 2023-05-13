@@ -19,12 +19,12 @@ export default function History() {
 
   const dbRef = ref(getDatabase(dataRef));
   useEffect(() => {
+    setInterval(() => {
+
     get(child(dbRef, `DHT/HumHistory`))
       .then((snapshot) => {
         if (snapshot.exists()) {
-          setInterval(() => {
             setHumi(snapshot.val());
-          }, 1000);
         } else {
           console.log("No data available");
         }
@@ -32,14 +32,16 @@ export default function History() {
       .catch((error) => {
         console.error(error);
       });
+    }, 1000);
+
   }, []);
   useEffect(() => {
+    setInterval(() => {
+
     get(child(dbRef, `DHT/TempHistory`))
       .then((snapshot) => {
         if (snapshot.exists()) {
-          setInterval(() => {
             setTemps(snapshot.val());
-          }, 1000);
         } else {
           console.log("No data available");
         }
@@ -47,6 +49,8 @@ export default function History() {
       .catch((error) => {
         console.error(error);
       });
+    }, 1000);
+
   }, []);
   useEffect(() => {
     setInterval(() => {

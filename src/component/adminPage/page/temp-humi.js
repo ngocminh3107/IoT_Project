@@ -26,34 +26,38 @@ export default function TempHumi() {
   const [Temps, setTemps] = useState("");
 
   useEffect(() => {
-    get(child(dbRef, `DHT/HumHistory`))
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          setInterval(() => {
+    setInterval(() => {
+
+      get(child(dbRef, `DHT/HumHistory`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
             setHumi(snapshot.val());
-          }, 1000);
-        } else {
-          console.log("No data available");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, 1000);
+
   }, []);
   useEffect(() => {
-    get(child(dbRef, `DHT/TempHistory`))
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          setInterval(() => {
+    setInterval(() => {
+
+      get(child(dbRef, `DHT/TempHistory`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
             setTemps(snapshot.val());
-          }, 1000);
-        } else {
-          console.log("No data available");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, 1000);
+
   }, []);
 
   const dt = Object.values(Temps).reverse().slice(0, 11);
@@ -189,8 +193,8 @@ export default function TempHumi() {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                   
-                  <Line type="monotone" dataKey="humidity" stroke="#0511f7" strokeWidth={3}    />
+
+                  <Line type="monotone" dataKey="humidity" stroke="#0511f7" strokeWidth={3} />
                 </LineChart>
               </ResponsiveContainer>
             </div>
