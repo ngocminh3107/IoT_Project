@@ -88,10 +88,6 @@ p{
                     box-shadow: rgba(0, 0, 0, 0.6) 0px 8px 24px;
 
 
-                    &:hover {
-                        box-shadow: rgb(197, 0, 246) 0px 4px 12px;
-
-                    }
                 }
 
                 &-button {
@@ -140,11 +136,7 @@ p{
                         }
                     }
 
-                    &:hover {
-                        box-shadow: rgb(197, 0, 246) 0px 4px 12px;
-
-                    }
-
+                  
 
 
                     .buttons {
@@ -385,9 +377,7 @@ p{
         height: 100%;
     }
 
-    &:hover {
-        box-shadow: rgb(197, 0, 246) 0px 4px 12px;
-    }
+   
 
     .card {
         border: none;
