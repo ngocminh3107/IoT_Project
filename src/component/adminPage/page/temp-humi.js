@@ -161,6 +161,7 @@ export default function TempHumi() {
                     type="monotone"
                     dataKey="temperature"
                     stroke="#f71505"
+                    strokeWidth={3}
                   />
                 </LineChart>
               </ResponsiveContainer>
@@ -188,7 +189,8 @@ export default function TempHumi() {
                   <YAxis />
                   <Tooltip />
                   <Legend />
-                  <Line type="monotone" dataKey="humidity" stroke="#0511f7" />
+                   
+                  <Line type="monotone" dataKey="humidity" stroke="#0511f7" strokeWidth={3}    />
                 </LineChart>
               </ResponsiveContainer>
             </div>
