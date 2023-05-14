@@ -337,7 +337,7 @@ export default function SumaryPage() {
             </div>
             <div className="">
               <iframe
-                src="http://116.109.96.91:5000/video_feed"
+                src="http://192.168.1.15:5000/video_feed"
                 width="260"
                 height="150"
               ></iframe>
