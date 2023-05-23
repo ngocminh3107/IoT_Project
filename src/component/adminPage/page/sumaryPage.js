@@ -1,6 +1,14 @@
 import { NavLink } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { getDatabase, ref, child, get, set } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  child,
+  get,
+  set,
+  onValue,
+  off,
+} from "firebase/database";
 import { dataRef } from "../../../firebase";
 import "./page.scss";
 import adminImg from "../../../img/admin.jpg";
@@ -37,39 +45,46 @@ export default function SumaryPage() {
   const [Lights, setLights] = useState("");
   const [Humis, setHumi] = useState("");
 
+
   useEffect(() => {
-    get(child(dbRef, `autoControl`))
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          setAuto(snapshot.val());
-        } else {
-          console.log("No data available");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    const dbRef = ref(getDatabase());
+    const relayRef = child(dbRef, "autoControl");
+    const handleSnapshot = (snapshot) => {
+      if (snapshot.exists()) {
+        setAuto(snapshot.val());
+      } else {
+        console.log("No data available");
+      }
+    };
+    const handleError = (error) => {
+      console.error(error);
+    };
+    onValue(relayRef, handleSnapshot, handleError);
+    return () => off(relayRef, "value", handleSnapshot);
   }, []);
 
   //replau
-  useEffect(() => {
-    get(child(dbRef, `Relay`))
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          setReplay1Status(snapshot.val().relay1.status);
-          setReplay2Status(snapshot.val().relay2.status);
-          setReplay3Status(snapshot.val().relay3.status);
-          setReplay4Status(snapshot.val().relay4.status);
-          setReplay5Status(snapshot.val().relay5.status);
-          setReplay6Status(snapshot.val().relay6.status);
-        } else {
-          console.log("No data available");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, []);
+ useEffect(() => {
+    const dbRef = ref(getDatabase());
+    const relayRef = child(dbRef, "Relay");
+    const handleSnapshot = (snapshot) => {
+      if (snapshot.exists()) {
+        setReplay1Status(snapshot.val().relay1.status);
+        setReplay2Status(snapshot.val().relay2.status);
+        setReplay3Status(snapshot.val().relay3.status);
+        setReplay4Status(snapshot.val().relay4.status);
+        setReplay5Status(snapshot.val().relay5.status);
+        setReplay6Status(snapshot.val().relay6.status);
+      } else {
+        console.log("No data available");
+      }
+    };
+    const handleError = (error) => {
+      console.error(error);
+    };
+    onValue(relayRef, handleSnapshot, handleError);
+    return () => off(relayRef, "value", handleSnapshot);
+  }, []); 
 
   //dht
   useEffect(() => {
@@ -86,9 +101,7 @@ export default function SumaryPage() {
           console.error(error);
         });
     }, 1000);
-
   }, []);
-  console.log(Temp)
   //BH1750
 
   useEffect(() => {
@@ -110,37 +123,33 @@ export default function SumaryPage() {
   //hiso
   useEffect(() => {
     setInterval(() => {
-
-    get(child(dbRef, `DHT/HumHistory`))
-      .then((snapshot) => {
-        if (snapshot.exists()) {
+      get(child(dbRef, `DHT/HumHistory`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
             setHumi(snapshot.val());
-        } else {
-          console.log("No data available");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }, 1000);
-
   }, []);
   useEffect(() => {
     setInterval(() => {
-
-    get(child(dbRef, `DHT/TempHistory`))
-      .then((snapshot) => {
-        if (snapshot.exists()) {
+      get(child(dbRef, `DHT/TempHistory`))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
             setTemps(snapshot.val());
-        } else {
-          console.log("No data available");
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     }, 1000);
-
   }, []);
   useEffect(() => {
     setInterval(() => {
@@ -159,7 +168,7 @@ export default function SumaryPage() {
   }, []);
 
   const toggleAuto = () => {
-    const newStatus = auto === "1" ? "0" : "1";
+    const newStatus = auto === 1 ? 0 : 1;
     set(child(dbRef, "autoControl"), newStatus)
       .then(() => {
         setAuto(newStatus);
@@ -170,7 +179,7 @@ export default function SumaryPage() {
   };
 
   const toggleReplay1 = () => {
-    const newStatus = replay1Status === "1" ? "0" : "1";
+    const newStatus = replay1Status === 1 ? 0 : 1;
     set(child(dbRef, "Relay/relay1/status"), newStatus)
       .then(() => {
         setReplay1Status(newStatus);
@@ -181,7 +190,7 @@ export default function SumaryPage() {
   };
 
   const toggleReplay2 = () => {
-    const newStatus = replay2Status === "1" ? "0" : "1";
+    const newStatus = replay2Status === 1 ? 0 : 1;
     set(child(dbRef, "Relay/relay2/status"), newStatus)
       .then(() => setReplay2Status(newStatus))
       .catch((error) => {
@@ -189,7 +198,7 @@ export default function SumaryPage() {
       });
   };
   const toggleReplay3 = () => {
-    const newStatus = replay3Status === "1" ? "0" : "1";
+    const newStatus = replay3Status === 1 ? 0 : 1;
     set(child(dbRef, "Relay/relay3/status"), newStatus)
       .then(() => setReplay3Status(newStatus))
       .catch((error) => {
@@ -197,7 +206,7 @@ export default function SumaryPage() {
       });
   };
   const toggleReplay4 = () => {
-    const newStatus = replay4Status === "1" ? "0" : "1";
+    const newStatus = replay4Status === 1 ? 0 : 1;
     console.log(newStatus);
     set(child(dbRef, "Relay/relay4/status"), newStatus)
       .then(() => setReplay4Status(newStatus))
@@ -206,7 +215,7 @@ export default function SumaryPage() {
       });
   };
   const toggleReplay5 = () => {
-    const newStatus = replay5Status === "1" ? "0" : "1";
+    const newStatus = replay5Status === 1 ? 0 : 1;
     set(child(dbRef, "Relay/relay5/status"), newStatus)
       .then(() => setReplay5Status(newStatus))
       .catch((error) => {
@@ -214,7 +223,7 @@ export default function SumaryPage() {
       });
   };
   const toggleReplay6 = () => {
-    const newStatus = replay6Status === "1" ? "0" : "1";
+    const newStatus = replay6Status === 1 ? 0 : 1;
     set(child(dbRef, "Relay/relay6/status"), newStatus)
       .then(() => setReplay6Status(newStatus))
       .catch((error) => {
@@ -226,22 +235,6 @@ export default function SumaryPage() {
     const button = document.getElementById(buttonId);
     button.classList.toggle("actives");
   };
-  const toggleClass8 = () => {
-    const button7 = document.getElementById("button8");
-    const button8 = document.getElementById("button7");
-    button7.classList.add("activebtn");
-    button8.classList.remove("activebtn");
-  };
-  const toggleClass7 = () => {
-    const button7 = document.getElementById("button8");
-    const button8 = document.getElementById("button7");
-    button8.classList.add("activebtn");
-    button7.classList.remove("activebtn");
-  };
-
-
-
-
 
 
   const dt = Object.values(Temps).reverse().slice(0, 11);
@@ -256,10 +249,6 @@ export default function SumaryPage() {
     humidity: dataHumis[index],
     light: dataLights[index],
   }));
-
-
-
-
 
   return (
     <div className="page">
@@ -381,18 +370,21 @@ export default function SumaryPage() {
                 </button>
                 <button
                   id="button7"
-                  className="activebtn"
+                  className={replay6Status === 0 ? "activebtn" : ""}
+
                   onClick={() => {
-                    toggleClass7();
+        
                     toggleReplay6();
                   }}
+
                 >
                   <img src={pauseicon} />
                 </button>
                 <button
                   id="button8"
+                  className={replay6Status === 1 ? "activebtn" : ""}
+
                   onClick={() => {
-                    toggleClass8();
                     toggleReplay6();
                   }}
                 >
@@ -402,9 +394,10 @@ export default function SumaryPage() {
                   <img src={backicon} />
                 </button>
               </div>
+
               <div className="buttons">
                 <p>
-                  Ấn để {replay1Status === "1" ? "tắt" : "bật"} bóng đèn trong{" "}
+                  Ấn để {replay1Status === 1 ? "tắt" : "bật"} bóng đèn trong{" "}
                 </p>
                 <button
                   id="light"
@@ -412,14 +405,15 @@ export default function SumaryPage() {
                     toggleClass("light");
                     toggleReplay1();
                   }}
-                  className={replay1Status === "1" ? "actives" : ""}
+                  className={replay1Status === 1 ? "actives" : ""}
                 >
                   <div className="circal"></div>
                 </button>
               </div>
+
               <div className="buttons">
                 <p>
-                  Ấn để {replay2Status === "1" ? "tắt" : "bật"} bóng đèn ngoài{" "}
+                  Ấn để {replay2Status === 1 ? "tắt" : "bật"} bóng đèn ngoài{" "}
                 </p>
                 <button
                   id="fan"
@@ -427,63 +421,60 @@ export default function SumaryPage() {
                     toggleReplay2();
                     toggleClass("fan");
                   }}
-                  className={replay2Status === "1" ? "actives" : ""}
-
+                  className={replay2Status === 1 ? "actives" : ""}
                 >
                   <div className="circal"></div>
                 </button>
               </div>
               <div className="buttons">
-                <p>Ấn để {replay3Status === "1" ? "tắt" : "bật"} quạt </p>
+                <p>Ấn để {replay3Status === 1 ? "tắt" : "bật"} quạt </p>
                 <button
                   id="button3"
                   onClick={() => {
                     toggleReplay3();
                     toggleClass("button3");
                   }}
-                  className={replay3Status === "1" ? "actives" : ""}
-
+                  className={replay3Status === 1 ? "actives" : ""}
                 >
                   <div className="circal"></div>
                 </button>
               </div>
               <div className="buttons">
-                <p>Ấn để {replay4Status === "1" ? "tắt" : "bật"} bơm </p>
+                <p>Ấn để {replay4Status === 1 ? "tắt" : "bật"} bơm </p>
                 <button
                   id="button4"
                   onClick={() => {
                     toggleReplay4();
                     toggleClass("button4");
                   }}
-                  className={replay4Status === "1" ? "actives" : ""}
+                  className={replay4Status === 1 ? "actives" : ""}
                 >
                   <div className="circal"></div>
                 </button>
               </div>
               <div className="buttons">
-                <p>Ấn để {replay5Status === "1" ? "tắt" : "bật"} phun sương </p>
+                <p>Ấn để {replay5Status === 1 ? "tắt" : "bật"} phun sương </p>
                 <button
                   id="button5"
                   onClick={() => {
                     toggleReplay5();
                     toggleClass("button5");
                   }}
-                  className={replay5Status === "1" ? "actives" : ""}
-
+                  className={replay5Status === 1 ? "actives" : ""}
                 >
                   <div className="circal"></div>
                 </button>
               </div>
 
               <div className="buttons">
-                <p>Ấn để {auto === "1" ? "tắt" : "bật"} chế độ tự động </p>
+                <p>Ấn để {auto === 1 ? "tắt" : "bật"} chế độ tự động </p>
                 <button
                   id="button9"
                   onClick={() => {
                     toggleClass("button9");
                     toggleAuto();
                   }}
-                  className={auto === "1" ? "actives" : ""}
+                  className={auto === 1 ? "actives" : ""}
                 >
                   <div className="circals"></div>
                 </button>
