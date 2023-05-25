@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { getDatabase, ref, child, get, set } from "firebase/database";
 import { dataRef } from "../../../firebase";
 import tempicon from "../../../img/temp-icon.svg";
-import ChartExample from "./visdeo";
 import "./page.scss";
 import adminImg from "../../../img/admin.jpg";
 import {

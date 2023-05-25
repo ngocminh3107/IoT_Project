@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import HomePage from "./homePage";
 import Login from "./component/loginPage/loginPage";
-import AdminPage from "./component/adminPage/adminpage";
 import SumaryPage from "./component/adminPage/page/sumaryPage";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import TempHumi from "./component/adminPage/page/temp-humi";
