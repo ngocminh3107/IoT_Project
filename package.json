@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
+    "dotenv": "^16.0.3",
     "firebase": "^9.21.0",
     "firebase-auth": "^0.1.2",
     "node-sass": "^7.0.3",
@@ -54,6 +55,7 @@
     ]
   },
   "devDependencies": {
+    "dotenv-webpack": "^8.0.1",
     "resolve-url-loader": "^5.0.0"
   }
 }

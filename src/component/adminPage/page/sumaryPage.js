@@ -30,6 +30,11 @@ import {
 } from "recharts";
 
 export default function SumaryPage() {
+  const apiUrl = process.env.REACT_APP_VIDEO_URL;
+  console.log(apiUrl)
+
+
+  
   const dbRef = ref(getDatabase(dataRef));
   const [replay1Status, setReplay1Status] = useState("");
   const [replay2Status, setReplay2Status] = useState("");
@@ -301,6 +306,8 @@ export default function SumaryPage() {
               </div>
             </div>
           </div>
+          <form>
+      </form>
           <div className="sumary__category">
             <div className="cards ">
               <div className="card">

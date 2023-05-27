@@ -17,7 +17,6 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/login/admin" element={<AdminPage />} />
         <Route path="/login/admin/" element={<SumaryPage />} />
         <Route path="/login/admin/temp-humi" element={<TempHumi />} />
         <Route path="/login/admin/light" element={<Light />} />
